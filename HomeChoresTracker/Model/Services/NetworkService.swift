@@ -66,8 +66,7 @@ class NetworkService {
      NOTE: The type to be encoded MUST be defined in this function, or the app will crash
      
      - parameter type: the type to be encoded (i.e. MyCustomType.self)
-     - parameter request: the URLRequest used to transmit the encoded result to the remote server
-     
+     - parameter request: the URLRequest used to transmit the encoded result to the remote server     
      */
     class func encode(from type: Any?, request: URLRequest) -> EncodingStatus {
         var localRequest = request
