@@ -11,4 +11,9 @@ import CoreData
 
 class ChildController {
     
+    func getChores(child: Child, chore: Chore) -> [Chore]? {
+        guard let chores = child.chores else {return nil}
+        return Array(chores) as? [Chore]
+    }
+    
 }

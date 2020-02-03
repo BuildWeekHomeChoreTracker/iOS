@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 extension Child {
+    
 //    var childRepresentation: ChildRepresentation? {
 //        guard let name = name,
 //            let parentName = parentName
@@ -17,7 +18,6 @@ extension Child {
 //        return ChildRepresentation(name: name, parentName: parentName, cleanStreak: Int(cleanStreak), chores: chores)
 //    }
     
-    #warning("Implement chores: [Chore]")
     convenience init?(name: String, parentName: String, cleanStreak: Int?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.name = name
