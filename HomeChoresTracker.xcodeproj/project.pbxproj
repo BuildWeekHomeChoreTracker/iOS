@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		639366B523E8AA0300683D1F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639366B423E8AA0300683D1F /* RoundedButton.swift */; };
+		63F3EA2423E8AF2D00BF4AAF /* Chore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63F3EA2323E8AF2D00BF4AAF /* Chore.storyboard */; };
+		63F3EA2623E8B21500BF4AAF /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EA2523E8B21500BF4AAF /* RoundedView.swift */; };
 		B90B32AC23E892F8003899D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32AB23E892F8003899D8 /* AppDelegate.swift */; };
 		B90B32AE23E892F9003899D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32AD23E892F9003899D8 /* SceneDelegate.swift */; };
 		B90B32B023E892F9003899D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32AF23E892F9003899D8 /* ViewController.swift */; };
@@ -16,14 +19,33 @@
 		B90B32CA23E893D8003899D8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32C923E893D8003899D8 /* NetworkService.swift */; };
 		B90B32CE23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B90B32CC23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld */; };
 		B90B32D023E89455003899D8 /* ChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32CF23E89455003899D8 /* ChildController.swift */; };
-		B90B32D423E89938003899D8 /* ChildRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32D323E89938003899D8 /* ChildRepresentation.swift */; };
-		B90B32D623E899F1003899D8 /* ChoreRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32D523E899F1003899D8 /* ChoreRepresentation.swift */; };
-		B90B32D823E89DEE003899D8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32D723E89DEE003899D8 /* CoreDataStack.swift */; };
-		B90B32DA23E89ED8003899D8 /* Child+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32D923E89ED8003899D8 /* Child+convenience.swift */; };
-		B90B32DC23E8A13E003899D8 /* Chore+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32DB23E8A13E003899D8 /* Chore+convenience.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		63A102C923E8BD00003187E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B90B32A023E892F8003899D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B90B32A723E892F8003899D8;
+			remoteInfo = HomeChoresTracker;
+		};
+		63A102D723E8BD0B003187E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B90B32A023E892F8003899D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B90B32A723E892F8003899D8;
+			remoteInfo = HomeChoresTracker;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		639366B423E8AA0300683D1F /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		63A102C423E8BD00003187E3 /* HomeChoresTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeChoresTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63A102C823E8BD00003187E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63A102D223E8BD0B003187E3 /* HomeChoresTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeChoresTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63A102D623E8BD0B003187E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63F3EA2323E8AF2D00BF4AAF /* Chore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chore.storyboard; sourceTree = "<group>"; };
+		63F3EA2523E8B21500BF4AAF /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		B90B32A823E892F8003899D8 /* HomeChoresTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeChoresTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B90B32AB23E892F8003899D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B90B32AD23E892F9003899D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,14 +57,23 @@
 		B90B32C923E893D8003899D8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B90B32CD23E893F3003899D8 /* HomeChoresTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeChoresTracker.xcdatamodel; sourceTree = "<group>"; };
 		B90B32CF23E89455003899D8 /* ChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildController.swift; sourceTree = "<group>"; };
-		B90B32D323E89938003899D8 /* ChildRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildRepresentation.swift; sourceTree = "<group>"; };
-		B90B32D523E899F1003899D8 /* ChoreRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreRepresentation.swift; sourceTree = "<group>"; };
-		B90B32D723E89DEE003899D8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		B90B32D923E89ED8003899D8 /* Child+convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Child+convenience.swift"; sourceTree = "<group>"; };
-		B90B32DB23E8A13E003899D8 /* Chore+convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chore+convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		63A102C123E8BD00003187E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63A102CF23E8BD0B003187E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B90B32A523E892F8003899D8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -53,10 +84,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		639366B323E8A9EC00683D1F /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				639366B423E8AA0300683D1F /* RoundedButton.swift */,
+				63F3EA2523E8B21500BF4AAF /* RoundedView.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		63A102C523E8BD00003187E3 /* HomeChoresTrackerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				63A102C823E8BD00003187E3 /* Info.plist */,
+			);
+			path = HomeChoresTrackerUITests;
+			sourceTree = "<group>";
+		};
+		63A102D323E8BD0B003187E3 /* HomeChoresTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				63A102D623E8BD0B003187E3 /* Info.plist */,
+			);
+			path = HomeChoresTrackerTests;
+			sourceTree = "<group>";
+		};
 		B90B329F23E892F8003899D8 = {
 			isa = PBXGroup;
 			children = (
 				B90B32AA23E892F8003899D8 /* HomeChoresTracker */,
+				63A102C523E8BD00003187E3 /* HomeChoresTrackerUITests */,
+				63A102D323E8BD0B003187E3 /* HomeChoresTrackerTests */,
 				B90B32A923E892F8003899D8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				B90B32A823E892F8003899D8 /* HomeChoresTracker.app */,
+				63A102C423E8BD00003187E3 /* HomeChoresTrackerUITests.xctest */,
+				63A102D223E8BD0B003187E3 /* HomeChoresTrackerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,6 +164,7 @@
 			children = (
 				B90B32B123E892F9003899D8 /* Main.storyboard */,
 				B90B32B623E892FC003899D8 /* LaunchScreen.storyboard */,
+				63F3EA2323E8AF2D00BF4AAF /* Chore.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -111,6 +172,7 @@
 		B90B32C323E89342003899D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				639366B323E8A9EC00683D1F /* Custom Views */,
 				B90B32C223E8932A003899D8 /* Storyboards */,
 			);
 			path = View;
@@ -182,6 +244,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		63A102C323E8BD00003187E3 /* HomeChoresTrackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63A102CD23E8BD00003187E3 /* Build configuration list for PBXNativeTarget "HomeChoresTrackerUITests" */;
+			buildPhases = (
+				63A102C023E8BD00003187E3 /* Sources */,
+				63A102C123E8BD00003187E3 /* Frameworks */,
+				63A102C223E8BD00003187E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63A102CA23E8BD00003187E3 /* PBXTargetDependency */,
+			);
+			name = HomeChoresTrackerUITests;
+			productName = HomeChoresTrackerUITests;
+			productReference = 63A102C423E8BD00003187E3 /* HomeChoresTrackerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		63A102D123E8BD0B003187E3 /* HomeChoresTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63A102D923E8BD0B003187E3 /* Build configuration list for PBXNativeTarget "HomeChoresTrackerTests" */;
+			buildPhases = (
+				63A102CE23E8BD0B003187E3 /* Sources */,
+				63A102CF23E8BD0B003187E3 /* Frameworks */,
+				63A102D023E8BD0B003187E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63A102D823E8BD0B003187E3 /* PBXTargetDependency */,
+			);
+			name = HomeChoresTrackerTests;
+			productName = HomeChoresTrackerTests;
+			productReference = 63A102D223E8BD0B003187E3 /* HomeChoresTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B90B32A723E892F8003899D8 /* HomeChoresTracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B90B32BC23E892FC003899D8 /* Build configuration list for PBXNativeTarget "HomeChoresTracker" */;
@@ -209,6 +307,14 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Lambda School";
 				TargetAttributes = {
+					63A102C323E8BD00003187E3 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = B90B32A723E892F8003899D8;
+					};
+					63A102D123E8BD0B003187E3 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = B90B32A723E892F8003899D8;
+					};
 					B90B32A723E892F8003899D8 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -228,15 +334,32 @@
 			projectRoot = "";
 			targets = (
 				B90B32A723E892F8003899D8 /* HomeChoresTracker */,
+				63A102C323E8BD00003187E3 /* HomeChoresTrackerUITests */,
+				63A102D123E8BD0B003187E3 /* HomeChoresTrackerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		63A102C223E8BD00003187E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63A102D023E8BD0B003187E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B90B32A623E892F8003899D8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63F3EA2423E8AF2D00BF4AAF /* Chore.storyboard in Resources */,
 				B90B32B823E892FC003899D8 /* LaunchScreen.storyboard in Resources */,
 				B90B32B523E892FC003899D8 /* Assets.xcassets in Resources */,
 				B90B32B323E892F9003899D8 /* Main.storyboard in Resources */,
@@ -246,11 +369,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		63A102C023E8BD00003187E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63A102CE23E8BD0B003187E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B90B32A423E892F8003899D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B90B32D623E899F1003899D8 /* ChoreRepresentation.swift in Sources */,
+				63F3EA2623E8B21500BF4AAF /* RoundedView.swift in Sources */,
 				B90B32B023E892F9003899D8 /* ViewController.swift in Sources */,
 				B90B32D423E89938003899D8 /* ChildRepresentation.swift in Sources */,
 				B90B32DC23E8A13E003899D8 /* Chore+convenience.swift in Sources */,
@@ -259,12 +397,26 @@
 				B90B32CA23E893D8003899D8 /* NetworkService.swift in Sources */,
 				B90B32DA23E89ED8003899D8 /* Child+convenience.swift in Sources */,
 				B90B32CE23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld in Sources */,
+				639366B523E8AA0300683D1F /* RoundedButton.swift in Sources */,
 				B90B32D023E89455003899D8 /* ChildController.swift in Sources */,
 				B90B32AE23E892F9003899D8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63A102CA23E8BD00003187E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B90B32A723E892F8003899D8 /* HomeChoresTracker */;
+			targetProxy = 63A102C923E8BD00003187E3 /* PBXContainerItemProxy */;
+		};
+		63A102D823E8BD0B003187E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B90B32A723E892F8003899D8 /* HomeChoresTracker */;
+			targetProxy = 63A102D723E8BD0B003187E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B90B32B123E892F9003899D8 /* Main.storyboard */ = {
@@ -286,6 +438,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		63A102CB23E8BD00003187E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P7DFWNNEL3;
+				INFOPLIST_FILE = HomeChoresTrackerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.chadarutherford.HomeChoresTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HomeChoresTracker;
+			};
+			name = Debug;
+		};
+		63A102CC23E8BD00003187E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P7DFWNNEL3;
+				INFOPLIST_FILE = HomeChoresTrackerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.chadarutherford.HomeChoresTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HomeChoresTracker;
+			};
+			name = Release;
+		};
+		63A102DA23E8BD0B003187E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P7DFWNNEL3;
+				INFOPLIST_FILE = HomeChoresTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.chadarutherford.HomeChoresTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeChoresTracker.app/HomeChoresTracker";
+			};
+			name = Debug;
+		};
+		63A102DB23E8BD0B003187E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P7DFWNNEL3;
+				INFOPLIST_FILE = HomeChoresTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.chadarutherford.HomeChoresTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeChoresTracker.app/HomeChoresTracker";
+			};
+			name = Release;
+		};
 		B90B32BA23E892FC003899D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -439,6 +669,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		63A102CD23E8BD00003187E3 /* Build configuration list for PBXNativeTarget "HomeChoresTrackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63A102CB23E8BD00003187E3 /* Debug */,
+				63A102CC23E8BD00003187E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63A102D923E8BD0B003187E3 /* Build configuration list for PBXNativeTarget "HomeChoresTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63A102DA23E8BD0B003187E3 /* Debug */,
+				63A102DB23E8BD0B003187E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B90B32A323E892F8003899D8 /* Build configuration list for PBXProject "HomeChoresTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
