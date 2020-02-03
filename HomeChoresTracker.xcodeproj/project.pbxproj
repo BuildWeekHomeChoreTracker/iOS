@@ -16,6 +16,8 @@
 		B90B32CA23E893D8003899D8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32C923E893D8003899D8 /* NetworkService.swift */; };
 		B90B32CE23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B90B32CC23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld */; };
 		B90B32D023E89455003899D8 /* ChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32CF23E89455003899D8 /* ChildController.swift */; };
+		B90B32D423E89938003899D8 /* ChildRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32D323E89938003899D8 /* ChildRepresentation.swift */; };
+		B90B32D623E899F1003899D8 /* ChoreRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32D523E899F1003899D8 /* ChoreRepresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		B90B32C923E893D8003899D8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B90B32CD23E893F3003899D8 /* HomeChoresTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeChoresTracker.xcdatamodel; sourceTree = "<group>"; };
 		B90B32CF23E89455003899D8 /* ChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildController.swift; sourceTree = "<group>"; };
+		B90B32D323E89938003899D8 /* ChildRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildRepresentation.swift; sourceTree = "<group>"; };
+		B90B32D523E899F1003899D8 /* ChoreRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreRepresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				B90B32CC23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld */,
+				B90B32D123E898E7003899D8 /* Child */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -146,6 +151,23 @@
 				B90B32C923E893D8003899D8 /* NetworkService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B90B32D123E898E7003899D8 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				B90B32D323E89938003899D8 /* ChildRepresentation.swift */,
+				B90B32D223E898F2003899D8 /* Chore */,
+			);
+			path = Child;
+			sourceTree = "<group>";
+		};
+		B90B32D223E898F2003899D8 /* Chore */ = {
+			isa = PBXGroup;
+			children = (
+				B90B32D523E899F1003899D8 /* ChoreRepresentation.swift */,
+			);
+			path = Chore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +241,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B90B32D623E899F1003899D8 /* ChoreRepresentation.swift in Sources */,
 				B90B32B023E892F9003899D8 /* ViewController.swift in Sources */,
+				B90B32D423E89938003899D8 /* ChildRepresentation.swift in Sources */,
 				B90B32AC23E892F8003899D8 /* AppDelegate.swift in Sources */,
 				B90B32CA23E893D8003899D8 /* NetworkService.swift in Sources */,
 				B90B32CE23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld in Sources */,

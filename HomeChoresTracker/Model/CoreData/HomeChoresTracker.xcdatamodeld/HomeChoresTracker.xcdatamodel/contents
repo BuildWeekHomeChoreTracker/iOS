@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="Child" representedClassName="Child" syncable="YES" codeGenerationType="class">
+        <attribute name="cleanStreak" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="parentName" attributeType="String"/>
+        <relationship name="chores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Chore" inverseName="child" inverseEntity="Chore"/>
+    </entity>
+    <entity name="Chore" representedClassName="Chore" parentEntity="Child" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="child" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="chores" inverseEntity="Child"/>
+    </entity>
+    <elements>
+        <element name="Child" positionX="-27" positionY="18" width="128" height="103"/>
+        <element name="Chore" positionX="18" positionY="63" width="128" height="103"/>
+    </elements>
 </model>
