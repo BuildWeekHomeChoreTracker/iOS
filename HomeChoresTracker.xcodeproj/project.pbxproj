@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		637703F623E9B6C20076C177 /* ChoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703F523E9B6C20076C177 /* ChoresTableViewController.swift */; };
+		637703F923E9B79A0076C177 /* ChoresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703F823E9B79A0076C177 /* ChoresTableViewCell.swift */; };
+		637703FC23E9B9770076C177 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703FB23E9B9770076C177 /* String+Ext.swift */; };
+		6377040023E9BAD70076C177 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703FF23E9BAD70076C177 /* SegueHandler.swift */; };
 		639366B523E8AA0300683D1F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639366B423E8AA0300683D1F /* RoundedButton.swift */; };
 		63D7388C23E8DA2E00A8AC25 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7388B23E8DA2E00A8AC25 /* ConcurrentOperation.swift */; };
 		63F3EA2423E8AF2D00BF4AAF /* Chore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63F3EA2323E8AF2D00BF4AAF /* Chore.storyboard */; };
@@ -46,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		637703F523E9B6C20076C177 /* ChoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresTableViewController.swift; sourceTree = "<group>"; };
+		637703F823E9B79A0076C177 /* ChoresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresTableViewCell.swift; sourceTree = "<group>"; };
+		637703FB23E9B9770076C177 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		637703FF23E9BAD70076C177 /* SegueHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
 		639366B423E8AA0300683D1F /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		63A102C423E8BD00003187E3 /* HomeChoresTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeChoresTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A102C823E8BD00003187E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,6 +106,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		637703F723E9B7890076C177 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				637703F823E9B79A0076C177 /* ChoresTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		637703FA23E9B9680076C177 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				637703FB23E9B9770076C177 /* String+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		637703FE23E9BACA0076C177 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				637703FF23E9BAD70076C177 /* SegueHandler.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		639366B323E8A9EC00683D1F /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +186,7 @@
 		B90B32AA23E892F8003899D8 /* HomeChoresTracker */ = {
 			isa = PBXGroup;
 			children = (
+				637703FE23E9BACA0076C177 /* Protocols */,
 				63D7388A23E8D9D900A8AC25 /* Networking */,
 				B90B32C623E89378003899D8 /* Model */,
 				B90B32C023E8931D003899D8 /* Resources */,
@@ -166,6 +199,7 @@
 		B90B32C023E8931D003899D8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				637703FA23E9B9680076C177 /* Extensions */,
 				B90B32AB23E892F8003899D8 /* AppDelegate.swift */,
 				B90B32AD23E892F9003899D8 /* SceneDelegate.swift */,
 				B90B32B423E892FC003899D8 /* Assets.xcassets */,
@@ -178,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				B90B32AF23E892F9003899D8 /* ViewController.swift */,
+				637703F523E9B6C20076C177 /* ChoresTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -195,6 +230,7 @@
 		B90B32C323E89342003899D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				637703F723E9B7890076C177 /* Cells */,
 				639366B323E8A9EC00683D1F /* Custom Views */,
 				B90B32C223E8932A003899D8 /* Storyboards */,
 			);
@@ -411,11 +447,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6377040023E9BAD70076C177 /* SegueHandler.swift in Sources */,
+				637703FC23E9B9770076C177 /* String+Ext.swift in Sources */,
 				63F3EA2623E8B21500BF4AAF /* RoundedView.swift in Sources */,
 				B90B32B023E892F9003899D8 /* ViewController.swift in Sources */,
 				B90B32AC23E892F8003899D8 /* AppDelegate.swift in Sources */,
 				B90B32FF23E8D19A003899D8 /* Chore+convenience.swift in Sources */,
 				B90B330023E8D19A003899D8 /* ChoreRepresentation.swift in Sources */,
+				637703F623E9B6C20076C177 /* ChoresTableViewController.swift in Sources */,
 				B90B32CA23E893D8003899D8 /* NetworkService.swift in Sources */,
 				B90B330423E9156F003899D8 /* User.swift in Sources */,
 				B90B330223E8D1B6003899D8 /* CoreDataStack.swift in Sources */,
@@ -423,6 +462,7 @@
 				B90B32CE23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld in Sources */,
 				B90B32FC23E8D18F003899D8 /* Child+convenience.swift in Sources */,
 				63D7388C23E8DA2E00A8AC25 /* ConcurrentOperation.swift in Sources */,
+				637703F923E9B79A0076C177 /* ChoresTableViewCell.swift in Sources */,
 				639366B523E8AA0300683D1F /* RoundedButton.swift in Sources */,
 				B90B32D023E89455003899D8 /* ChildController.swift in Sources */,
 				B90B32AE23E892F9003899D8 /* SceneDelegate.swift in Sources */,

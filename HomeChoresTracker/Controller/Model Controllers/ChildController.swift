@@ -6,6 +6,7 @@ class ChildController {
     private let choreURL = URL(string: "https://chore-tracker1.herokuapp.com/api/chore")
     private var bearer: Bearer?
     var child: Child?
+    var chores: [ChoreRepresentation]?
     
     func login(with username: String, and password: String, complete: @escaping NetworkService.CompletionWithError) {
         guard let request = createRequestAndEncodeUser(user: User(username: username, password: password), url: loginURL, method: .post, headerType: .contentType, headerValue: .json) else {
@@ -18,27 +19,37 @@ class ChildController {
             if let response = response as? HTTPURLResponse,
             response.statusCode != 200 {
                 print("bad response code")
-                complete(NSError(domain: "ChildController.login.response.statusCode", code: response.statusCode, userInfo: nil))
+                DispatchQueue.main.async {
+                    complete(NSError(domain: "ChildController.login.response.statusCode", code: response.statusCode, userInfo: nil))
+                }
                 return
             }
             if let error = error {
-                complete(error)
+                DispatchQueue.main.async {
+                    complete(error)
+                }
                 return
             }
             
             guard let data = data else {
                 print("no data")
-                complete(NSError())
+                DispatchQueue.main.async {
+                    complete(NSError())
+                }
                 return
             }
             
             guard let bearer = NetworkService.decode(to: Bearer.self, data: data) as? Bearer else {
                 let error = NSError(domain: "ChildController.loginChild.decodeBearer", code: NetworkService.NetworkError.badDecode.rawValue)
-                complete(error)
+                DispatchQueue.main.async {
+                    complete(error)
+                }
                 return
             }
             self.bearer = bearer
-            complete(nil)
+            DispatchQueue.main.async {
+                complete(nil)
+            }
         }.resume()
     }
     
@@ -72,11 +83,62 @@ class ChildController {
             self.child = Child(representation: childRep)
             //TODO: Check for existing child in coredata, save if not
             complete(nil)
-        }
+        }.resume()
     }
     
     func getChores(complete: @escaping NetworkService.CompletionWithError) {
+        guard var request = NetworkService.createRequest(url: choreURL, method: .get, headerType: .contentType, headerValue: .json) else {
+            let error = NSError(domain: "ChildController.getChores.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
+            complete(error)
+            return
+        }
         
+        guard let bearer = bearer else {
+            let error = NSError(domain: "ChildController.bearer", code: NetworkService.NetworkError.unauth.rawValue)
+            complete(error)
+            return
+        }
+        
+        request.setValue(bearer.token, forHTTPHeaderField: NetworkService.HttpHeaderType.authorization.rawValue)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    complete(error)
+                }
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                let error = NSError(domain: "ChildController.getChores.responseError", code: response.statusCode)
+                DispatchQueue.main.async {
+                    complete(error)
+                }
+                return
+            }
+            
+            guard let data = data else {
+                let error = NSError(domain: "ChildController.getChild.decodeData", code: NetworkService.NetworkError.badDecode.rawValue)
+                DispatchQueue.main.async {
+                    complete(error)
+                }
+                return
+            }
+            
+            guard let anyChores = NetworkService.decodeObjects(to: ChoreRepresentation.self, data: data) else {
+                let error = NSError(domain: "ChildController.getChild.decodeData", code: NetworkService.NetworkError.badDecode.rawValue)
+                DispatchQueue.main.async {
+                    complete(error)
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                if let chores = anyChores as? [ChoreRepresentation] {
+                    self.chores = chores
+                    complete(nil)
+                }                
+            }
+        }.resume()
     }
     
     
