@@ -24,6 +24,7 @@
 		B90B32FF23E8D19A003899D8 /* Chore+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32FD23E8D19A003899D8 /* Chore+convenience.swift */; };
 		B90B330023E8D19A003899D8 /* ChoreRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32FE23E8D19A003899D8 /* ChoreRepresentation.swift */; };
 		B90B330223E8D1B6003899D8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B330123E8D1B6003899D8 /* CoreDataStack.swift */; };
+		B90B330423E9156F003899D8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B330323E9156F003899D8 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		B90B32FD23E8D19A003899D8 /* Chore+convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chore+convenience.swift"; sourceTree = "<group>"; };
 		B90B32FE23E8D19A003899D8 /* ChoreRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoreRepresentation.swift; sourceTree = "<group>"; };
 		B90B330123E8D1B6003899D8 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		B90B330323E9156F003899D8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			children = (
 				B90B32C723E8937E003899D8 /* CoreData */,
 				B90B32CB23E893DC003899D8 /* Services */,
+				B90B330323E9156F003899D8 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				B90B32FF23E8D19A003899D8 /* Chore+convenience.swift in Sources */,
 				B90B330023E8D19A003899D8 /* ChoreRepresentation.swift in Sources */,
 				B90B32CA23E893D8003899D8 /* NetworkService.swift in Sources */,
+				B90B330423E9156F003899D8 /* User.swift in Sources */,
 				B90B330223E8D1B6003899D8 /* CoreDataStack.swift in Sources */,
 				B90B32FB23E8D18F003899D8 /* ChildRepresentation.swift in Sources */,
 				B90B32CE23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld in Sources */,
