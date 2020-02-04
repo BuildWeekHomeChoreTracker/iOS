@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63371F2223E9E1790072C8AB /* HomeChoreTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63371F2123E9E1790072C8AB /* HomeChoreTrackerUITests.swift */; };
+		634654AF23EA0A6C002E792B /* ChildTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634654AE23EA0A6C002E792B /* ChildTests.swift */; };
+		634654B123EA0BFF002E792B /* ChoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634654B023EA0BFF002E792B /* ChoreTests.swift */; };
+		634654B423EA11CE002E792B /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634654B323EA11CE002E792B /* NetworkServiceTests.swift */; };
+		634D42DA23EA1F6C00A6D53E /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D42D923EA1F6C00A6D53E /* ConcurrentOperation.swift */; };
+		634D42DC23EA1F7F00A6D53E /* FetchChoresOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D42DB23EA1F7F00A6D53E /* FetchChoresOperation.swift */; };
 		637703F623E9B6C20076C177 /* ChoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703F523E9B6C20076C177 /* ChoresTableViewController.swift */; };
 		637703F923E9B79A0076C177 /* ChoresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703F823E9B79A0076C177 /* ChoresTableViewCell.swift */; };
 		637703FC23E9B9770076C177 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703FB23E9B9770076C177 /* String+Ext.swift */; };
 		6377040023E9BAD70076C177 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703FF23E9BAD70076C177 /* SegueHandler.swift */; };
 		639366B523E8AA0300683D1F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639366B423E8AA0300683D1F /* RoundedButton.swift */; };
-		63D7388C23E8DA2E00A8AC25 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7388B23E8DA2E00A8AC25 /* ConcurrentOperation.swift */; };
+		63DCDEB123E9E49300446611 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DCDEB023E9E49300446611 /* NetworkingTests.swift */; };
 		63F3EA2423E8AF2D00BF4AAF /* Chore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63F3EA2323E8AF2D00BF4AAF /* Chore.storyboard */; };
 		63F3EA2623E8B21500BF4AAF /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EA2523E8B21500BF4AAF /* RoundedView.swift */; };
+		63FEDF7B23E9ED7B00BCA319 /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEDF7A23E9ED7B00BCA319 /* NetworkDataLoader.swift */; };
+		63FEDF7D23E9EE2700BCA319 /* URLSession+NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEDF7C23E9EE2700BCA319 /* URLSession+NetworkDataLoader.swift */; };
+		63FEDF7F23E9EFEB00BCA319 /* MockJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEDF7E23E9EFEB00BCA319 /* MockJSON.swift */; };
+		63FEDF8123E9F15700BCA319 /* MockLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEDF8023E9F15700BCA319 /* MockLoader.swift */; };
 		B90B32AC23E892F8003899D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32AB23E892F8003899D8 /* AppDelegate.swift */; };
 		B90B32AE23E892F9003899D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32AD23E892F9003899D8 /* SceneDelegate.swift */; };
 		B90B32B023E892F9003899D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32AF23E892F9003899D8 /* ViewController.swift */; };
@@ -50,6 +60,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63371F2123E9E1790072C8AB /* HomeChoreTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChoreTrackerUITests.swift; sourceTree = "<group>"; };
+		634654AE23EA0A6C002E792B /* ChildTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildTests.swift; sourceTree = "<group>"; };
+		634654B023EA0BFF002E792B /* ChoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTests.swift; sourceTree = "<group>"; };
+		634654B323EA11CE002E792B /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		634D42D923EA1F6C00A6D53E /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		634D42DB23EA1F7F00A6D53E /* FetchChoresOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChoresOperation.swift; sourceTree = "<group>"; };
 		637703F523E9B6C20076C177 /* ChoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresTableViewController.swift; sourceTree = "<group>"; };
 		637703F823E9B79A0076C177 /* ChoresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresTableViewCell.swift; sourceTree = "<group>"; };
 		637703FB23E9B9770076C177 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -59,9 +75,13 @@
 		63A102C823E8BD00003187E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63A102D223E8BD0B003187E3 /* HomeChoresTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeChoresTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A102D623E8BD0B003187E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63D7388B23E8DA2E00A8AC25 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		63DCDEB023E9E49300446611 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		63F3EA2323E8AF2D00BF4AAF /* Chore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chore.storyboard; sourceTree = "<group>"; };
 		63F3EA2523E8B21500BF4AAF /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		63FEDF7A23E9ED7B00BCA319 /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
+		63FEDF7C23E9EE2700BCA319 /* URLSession+NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkDataLoader.swift"; sourceTree = "<group>"; };
+		63FEDF7E23E9EFEB00BCA319 /* MockJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSON.swift; sourceTree = "<group>"; };
+		63FEDF8023E9F15700BCA319 /* MockLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoader.swift; sourceTree = "<group>"; };
 		B90B32A823E892F8003899D8 /* HomeChoresTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeChoresTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B90B32AB23E892F8003899D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B90B32AD23E892F9003899D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +126,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		634654AA23EA0A38002E792B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				63DCDEB023E9E49300446611 /* NetworkingTests.swift */,
+				63FEDF7E23E9EFEB00BCA319 /* MockJSON.swift */,
+				63FEDF8023E9F15700BCA319 /* MockLoader.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		634654AB23EA0A46002E792B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				634654AD23EA0A59002E792B /* Child */,
+				634654AC23EA0A4F002E792B /* Chore */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		634654AC23EA0A4F002E792B /* Chore */ = {
+			isa = PBXGroup;
+			children = (
+				634654B023EA0BFF002E792B /* ChoreTests.swift */,
+			);
+			path = Chore;
+			sourceTree = "<group>";
+		};
+		634654AD23EA0A59002E792B /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				634654AE23EA0A6C002E792B /* ChildTests.swift */,
+			);
+			path = Child;
+			sourceTree = "<group>";
+		};
+		634654B223EA11B3002E792B /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				634654B323EA11CE002E792B /* NetworkServiceTests.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		637703F723E9B7890076C177 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				637703FB23E9B9770076C177 /* String+Ext.swift */,
+				63FEDF7C23E9EE2700BCA319 /* URLSession+NetworkDataLoader.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -143,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				63A102C823E8BD00003187E3 /* Info.plist */,
+				63371F2123E9E1790072C8AB /* HomeChoreTrackerUITests.swift */,
 			);
 			path = HomeChoresTrackerUITests;
 			sourceTree = "<group>";
@@ -150,6 +215,9 @@
 		63A102D323E8BD0B003187E3 /* HomeChoresTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				634654B223EA11B3002E792B /* NetworkService */,
+				634654AB23EA0A46002E792B /* Models */,
+				634654AA23EA0A38002E792B /* Networking */,
 				63A102D623E8BD0B003187E3 /* Info.plist */,
 			);
 			path = HomeChoresTrackerTests;
@@ -158,7 +226,9 @@
 		63D7388A23E8D9D900A8AC25 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				63D7388B23E8DA2E00A8AC25 /* ConcurrentOperation.swift */,
+				634D42D923EA1F6C00A6D53E /* ConcurrentOperation.swift */,
+				63FEDF7A23E9ED7B00BCA319 /* NetworkDataLoader.swift */,
+				634D42DB23EA1F7F00A6D53E /* FetchChoresOperation.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -167,8 +237,8 @@
 			isa = PBXGroup;
 			children = (
 				B90B32AA23E892F8003899D8 /* HomeChoresTracker */,
-				63A102C523E8BD00003187E3 /* HomeChoresTrackerUITests */,
 				63A102D323E8BD0B003187E3 /* HomeChoresTrackerTests */,
+				63A102C523E8BD00003187E3 /* HomeChoresTrackerUITests */,
 				B90B32A923E892F8003899D8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -369,10 +439,12 @@
 				TargetAttributes = {
 					63A102C323E8BD00003187E3 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = B90B32A723E892F8003899D8;
 					};
 					63A102D123E8BD0B003187E3 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = B90B32A723E892F8003899D8;
 					};
 					B90B32A723E892F8003899D8 = {
@@ -433,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63371F2223E9E1790072C8AB /* HomeChoreTrackerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +513,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DCDEB123E9E49300446611 /* NetworkingTests.swift in Sources */,
+				63FEDF7F23E9EFEB00BCA319 /* MockJSON.swift in Sources */,
+				634654B123EA0BFF002E792B /* ChoreTests.swift in Sources */,
+				634654AF23EA0A6C002E792B /* ChildTests.swift in Sources */,
+				634654B423EA11CE002E792B /* NetworkServiceTests.swift in Sources */,
+				63FEDF8123E9F15700BCA319 /* MockLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,16 +531,19 @@
 				63F3EA2623E8B21500BF4AAF /* RoundedView.swift in Sources */,
 				B90B32B023E892F9003899D8 /* ViewController.swift in Sources */,
 				B90B32AC23E892F8003899D8 /* AppDelegate.swift in Sources */,
+				63FEDF7B23E9ED7B00BCA319 /* NetworkDataLoader.swift in Sources */,
 				B90B32FF23E8D19A003899D8 /* Chore+convenience.swift in Sources */,
 				B90B330023E8D19A003899D8 /* ChoreRepresentation.swift in Sources */,
+				634D42DC23EA1F7F00A6D53E /* FetchChoresOperation.swift in Sources */,
 				637703F623E9B6C20076C177 /* ChoresTableViewController.swift in Sources */,
 				B90B32CA23E893D8003899D8 /* NetworkService.swift in Sources */,
+				634D42DA23EA1F6C00A6D53E /* ConcurrentOperation.swift in Sources */,
+				63FEDF7D23E9EE2700BCA319 /* URLSession+NetworkDataLoader.swift in Sources */,
 				B90B330423E9156F003899D8 /* User.swift in Sources */,
 				B90B330223E8D1B6003899D8 /* CoreDataStack.swift in Sources */,
 				B90B32FB23E8D18F003899D8 /* ChildRepresentation.swift in Sources */,
 				B90B32CE23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld in Sources */,
 				B90B32FC23E8D18F003899D8 /* Child+convenience.swift in Sources */,
-				63D7388C23E8DA2E00A8AC25 /* ConcurrentOperation.swift in Sources */,
 				637703F923E9B79A0076C177 /* ChoresTableViewCell.swift in Sources */,
 				639366B523E8AA0300683D1F /* RoundedButton.swift in Sources */,
 				B90B32D023E89455003899D8 /* ChildController.swift in Sources */,
@@ -507,8 +589,11 @@
 		63A102CB23E8BD00003187E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Distribution: Lambda, Inc (VXUQXR6S56)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution: Lambda, Inc (VXUQXR6S56)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P7DFWNNEL3;
+				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = HomeChoresTrackerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -517,6 +602,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chadarutherford.HomeChoresTrackerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HomeChoresTracker;
@@ -526,8 +612,11 @@
 		63A102CC23E8BD00003187E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Distribution: Lambda, Inc (VXUQXR6S56)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution: Lambda, Inc (VXUQXR6S56)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P7DFWNNEL3;
+				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = HomeChoresTrackerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -546,8 +635,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P7DFWNNEL3;
+				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = HomeChoresTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -556,6 +646,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chadarutherford.HomeChoresTrackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeChoresTracker.app/HomeChoresTracker";
@@ -566,8 +657,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P7DFWNNEL3;
+				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = HomeChoresTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

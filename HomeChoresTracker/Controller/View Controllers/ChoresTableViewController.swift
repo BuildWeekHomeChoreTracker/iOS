@@ -12,21 +12,22 @@ class ChoresTableViewController: UITableViewController {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
-    var childController: ChildController? {
-        didSet {
-            childController?.getChores { error in
-                if let error = error {
-                    self.showAlert(with: "Error", and: error.localizedDescription)
-                }
-                self.tableView.reloadData()
-            }
-        }
-    }
+    var childController: ChildController?
+    let choreFetchQueue = OperationQueue()
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let controller = childController {
+            let fetchChoresOp = FetchChoresOperation(childController: controller)
+            let updateOp = BlockOperation {
+                self.tableView.reloadData()
+            }
+            choreFetchQueue.addOperation(fetchChoresOp)
+            updateOp.addDependency(fetchChoresOp)
+            OperationQueue.main.addOperation(updateOp)
+        }
     }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
@@ -44,12 +45,12 @@ class ChoresTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return childController?.chores?.count ?? 0
+        return childController?.chores.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: .choreCell, for: indexPath) as? ChoresTableViewCell else { return UITableViewCell() }
-        let chore = childController?.chores?[indexPath.row]
+        let chore = childController?.chores[indexPath.row]
         cell.chore = chore
         return cell
     }

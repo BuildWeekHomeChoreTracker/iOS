@@ -131,19 +131,6 @@ class NetworkService {
             case is Bearer.Type:
                 let token = try decoder.decode(Bearer.self, from: data)
                 return token
-            default: fatalError("type \(String(describing: type)) is not defined locally in decode function")
-            }
-        } catch {
-            print("Error Decoding JSON into \(String(describing: type)) Object \(error)")
-            return nil
-        }
-    }
-    
-    class func decodeObjects(to type: Any?, data: Data) -> [Any]? {
-        let decoder = JSONDecoder()
-        
-        do {
-            switch type {
             case is ChoreRepresentation.Type:
                 let chores = try decoder.decode([ChoreRepresentation].self, from: data)
                 return chores
