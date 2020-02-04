@@ -8,8 +8,31 @@
 
 import Foundation
 
+/**
+Bearer token for logged in user
+ */
+struct Bearer: Codable {
+    let token: String
+}
+
 class NetworkService {
+    //MARK: Completion Handlers
+    typealias CompletionWithError = (Error?) -> ()
+    typealias Complete = () -> ()
     
+    //MARK: Network Error Codes
+    enum NetworkError: Int {
+        case badRequest = 400
+        case unauth = 401
+        case forbidden = 403
+        case notFound = 404
+        case badMethod = 405
+        case timeout = 408
+        case badEncode = 998
+        case badDecode = 999
+    }
+    
+    //MARK: Request parameters
     enum HttpMethod: String {
         case get = "GET"
         case post = "POST"
@@ -22,6 +45,7 @@ class NetworkService {
      */
     enum HttpHeaderType: String {
         case contentType = "Content-Type"
+        case authorization = "Authorization"
     }
     /**
      the value of the header-type (i.e. "application/json")
@@ -38,6 +62,8 @@ class NetworkService {
         let request: URLRequest?
         let error: Error?
     }
+    
+    //MARK: Methods
     
     /**
      Create a request given a URL and HTTP Request Method
@@ -66,7 +92,7 @@ class NetworkService {
      NOTE: The type to be encoded MUST be defined in this function, or the app will crash
      
      - parameter type: the type to be encoded (i.e. MyCustomType.self)
-     - parameter request: the URLRequest used to transmit the encoded result to the remote server     
+     - parameter request: the URLRequest used to transmit the encoded result to the remote server
      */
     class func encode(from type: Any?, request: URLRequest) -> EncodingStatus {
         var localRequest = request
@@ -92,14 +118,17 @@ class NetworkService {
      - parameter type: the type to be decoded to (i.e. MyCustomType.self)
      - parameter data: the JSON data to be decoded
      */
-    class func decode(to type: Any?, data: Data) -> ChildRepresentation? {
+    class func decode(to type: Any?, data: Data) -> Any? {
         let decoder = JSONDecoder()
         
         do {
             switch type {
             case is ChildRepresentation.Type:
-                let entries = try decoder.decode(ChildRepresentation.self, from: data)
-                return entries
+                let child = try decoder.decode(ChildRepresentation.self, from: data)
+                return child
+            case is Bearer.Type:
+                let token = try decoder.decode(Bearer.self, from: data)
+                return token
             default: fatalError("type \(String(describing: type)) is not defined locally in decode function")
             }
         } catch {
