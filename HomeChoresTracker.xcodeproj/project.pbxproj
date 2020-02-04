@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		639366B523E8AA0300683D1F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639366B423E8AA0300683D1F /* RoundedButton.swift */; };
-		63D7388C23E8DA2E00A8AC25 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7388B23E8DA2E00A8AC25 /* ConcurrentOperation.swift */; };
 		63F3EA2423E8AF2D00BF4AAF /* Chore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63F3EA2323E8AF2D00BF4AAF /* Chore.storyboard */; };
 		63F3EA2623E8B21500BF4AAF /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EA2523E8B21500BF4AAF /* RoundedView.swift */; };
 		B90B32AC23E892F8003899D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32AB23E892F8003899D8 /* AppDelegate.swift */; };
@@ -50,7 +49,6 @@
 		63A102C823E8BD00003187E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63A102D223E8BD0B003187E3 /* HomeChoresTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeChoresTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A102D623E8BD0B003187E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63D7388B23E8DA2E00A8AC25 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		63F3EA2323E8AF2D00BF4AAF /* Chore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chore.storyboard; sourceTree = "<group>"; };
 		63F3EA2523E8B21500BF4AAF /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		B90B32A823E892F8003899D8 /* HomeChoresTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeChoresTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,14 +119,6 @@
 			path = HomeChoresTrackerTests;
 			sourceTree = "<group>";
 		};
-		63D7388A23E8D9D900A8AC25 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				63D7388B23E8DA2E00A8AC25 /* ConcurrentOperation.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
 		B90B329F23E892F8003899D8 = {
 			isa = PBXGroup;
 			children = (
@@ -152,7 +142,6 @@
 		B90B32AA23E892F8003899D8 /* HomeChoresTracker */ = {
 			isa = PBXGroup;
 			children = (
-				63D7388A23E8D9D900A8AC25 /* Networking */,
 				B90B32C623E89378003899D8 /* Model */,
 				B90B32C023E8931D003899D8 /* Resources */,
 				B90B32C423E8934B003899D8 /* Controller */,
@@ -418,7 +407,6 @@
 				B90B32FB23E8D18F003899D8 /* ChildRepresentation.swift in Sources */,
 				B90B32CE23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld in Sources */,
 				B90B32FC23E8D18F003899D8 /* Child+convenience.swift in Sources */,
-				63D7388C23E8DA2E00A8AC25 /* ConcurrentOperation.swift in Sources */,
 				639366B523E8AA0300683D1F /* RoundedButton.swift in Sources */,
 				B90B32D023E89455003899D8 /* ChildController.swift in Sources */,
 				B90B32AE23E892F9003899D8 /* SceneDelegate.swift in Sources */,
