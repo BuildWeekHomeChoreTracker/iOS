@@ -15,7 +15,7 @@ extension Chore {
         return ChoreRepresentation(image: image, score: Int(score), title: title)
     }
     
-    convenience init?(title: String, image: Data?, score: Int16?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init?(title: String, image: Data? = nil, score: Int16? = nil, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.title = title
         self.image = image
