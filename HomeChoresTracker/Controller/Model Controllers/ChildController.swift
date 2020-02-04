@@ -7,8 +7,8 @@ class ChildController {
     private var bearer: Bearer?
     var child: Child?
     
-    func login(complete: @escaping NetworkService.CompletionWithError) {
-        guard let request = NetworkService.createRequest(url: loginURL, method: .post) else {
+    func login(with username: String, and password: String, complete: @escaping NetworkService.CompletionWithError) {
+        guard let request = createRequestAndEncodeUser(user: User(username: username, password: password), url: loginURL, method: .post) else {
             let error = NSError(domain: "ChildController.getChild.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
             complete(error)
             return
@@ -88,6 +88,27 @@ class ChildController {
     func getChoresFromChild(child: Child) -> [Chore]? {
         guard let chores = child.chores else {return nil}
         return Array(chores) as? [Chore]
+    }
+    
+    //MARK: Helper Methods
+    /**
+        Unwraps createRequest() and encodeUser()
+     */
+    private func createRequestAndEncodeUser(user: User, url: URL?, method: NetworkService.HttpMethod) -> URLRequest? {
+        guard let request = NetworkService.createRequest(url: url, method: method) else {
+            print(NSError(domain: "BadRequest", code: 400))
+            return nil
+        }
+        let encodingStatus = NetworkService.encode(from: user, request: request)
+        if let encodingError = encodingStatus.error {
+            print(encodingError)
+            return nil
+        }
+        guard let postRequest = encodingStatus.request else {
+            print("post request error!")
+            return nil
+        }
+        return postRequest
     }
     
 }
