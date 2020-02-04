@@ -172,6 +172,6 @@ class ChildController {
     }
     
     //MARK: MOCK DATA
-    let mockChild = Child(name: "Johnny Appleseed", parentName: "Paul Bunyon", cleanStreak: 9001) //over 9000 god I'm funny
-    let mockChore = Chore(title: "Chop down some trees")!
+    let mockChild = Child(name: "Johnny Appleseed", parentName: "Paul Bunyon")
+    let mockChore = Chore(bonusPoints: 5, cleanStreak: 7, dueDate: Date(timeIntervalSinceNow: 900), id: 1, information: "Chop them well", parentId: 1, score: 9000, title: "Chop some trees")
 }
