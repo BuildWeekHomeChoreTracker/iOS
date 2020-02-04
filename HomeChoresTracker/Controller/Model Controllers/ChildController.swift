@@ -2,14 +2,14 @@ import Foundation
 import CoreData
 
 class ChildController {
-    private let loginURL = URL(string: "")
+    private let loginURL = URL(string: "https://chore-tracker1.herokuapp.com/api/auth/login/child")
     private let choreURL = URL(string: "https://chore-tracker1.herokuapp.com/api/chore")
     private var bearer: Bearer?
     var child: Child?
     
     func login(with username: String, and password: String, complete: @escaping NetworkService.CompletionWithError) {
-        guard let request = createRequestAndEncodeUser(user: User(username: username, password: password), url: loginURL, method: .post) else {
-            let error = NSError(domain: "ChildController.getChild.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
+        guard let request = createRequestAndEncodeUser(user: User(username: username, password: password), url: loginURL, method: .post, headerType: .contentType, headerValue: .json) else {
+            let error = NSError(domain: "ChildController.login.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
             complete(error)
             return
         }
@@ -38,8 +38,6 @@ class ChildController {
                 return
             }
             self.bearer = bearer
-            
-            
             complete(nil)
         }.resume()
     }
@@ -94,8 +92,8 @@ class ChildController {
     /**
         Unwraps createRequest() and encodeUser()
      */
-    private func createRequestAndEncodeUser(user: User, url: URL?, method: NetworkService.HttpMethod) -> URLRequest? {
-        guard let request = NetworkService.createRequest(url: url, method: method) else {
+    private func createRequestAndEncodeUser(user: User, url: URL?, method: NetworkService.HttpMethod, headerType: NetworkService.HttpHeaderType, headerValue: NetworkService.HttpHeaderValue) -> URLRequest? {
+        guard let request = NetworkService.createRequest(url: url, method: method, headerType: headerType, headerValue: headerValue) else {
             print(NSError(domain: "BadRequest", code: 400))
             return nil
         }
@@ -111,4 +109,7 @@ class ChildController {
         return postRequest
     }
     
+    //MARK: MOCK DATA
+    let mockChild = Child(name: "Johnny Appleseed", parentName: "Paul Bunyon", cleanStreak: 9001) //over 9000 god I'm funny
+    let mockChore = Chore(title: "Chop down some trees")!
 }

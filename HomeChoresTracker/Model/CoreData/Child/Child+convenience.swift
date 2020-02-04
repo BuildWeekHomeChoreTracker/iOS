@@ -11,12 +11,19 @@ import CoreData
 
 extension Child {
     
-//    var childRepresentation: ChildRepresentation? {
-//        guard let name = name,
-//            let parentName = parentName
-//        else {return nil}
-//        return ChildRepresentation(name: name, parentName: parentName, cleanStreak: Int(cleanStreak), chores: chores)
-//    }
+    var childRepresentation: ChildRepresentation? {
+        guard let name = name,
+            let parentName = parentName,
+            let chores = chores
+        else {return nil}
+        var choreReps = [ChoreRepresentation]()
+        for chore in chores {
+            if let chore = chore as? Chore {
+                choreReps.append(ChoreRepresentation(image: chore.image, score: Int(chore.score), title: chore.title ?? ""))
+            }
+        }
+        return ChildRepresentation(name: name, parentName: parentName, cleanStreak: Int(cleanStreak), chores: choreReps)
+    }
     
     convenience init?(name: String, parentName: String, cleanStreak: Int?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
