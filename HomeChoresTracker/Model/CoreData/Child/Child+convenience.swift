@@ -23,6 +23,7 @@ extension Child {
                                                      childId: Int(chore.childId),
                                                      cleanStreak: Int(chore.cleanStreak),
                                                      comments: chore.comments,
+                                                     completed: Int(chore.completed),
                                                      dueDate: chore.dateString,
                                                      id: Int(chore.id),
                                                      image: chore.image,

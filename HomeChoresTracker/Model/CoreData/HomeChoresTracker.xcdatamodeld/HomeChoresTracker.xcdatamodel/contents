@@ -10,6 +10,7 @@
         <attribute name="bonusPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="cleanStreak" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="comments" optional="YES" attributeType="String"/>
+        <attribute name="completed" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary"/>
@@ -21,6 +22,6 @@
     </entity>
     <elements>
         <element name="Child" positionX="-27" positionY="18" width="128" height="103"/>
-        <element name="Chore" positionX="18" positionY="63" width="128" height="28"/>
+        <element name="Chore" positionX="18" positionY="63" width="128" height="223"/>
     </elements>
 </model>

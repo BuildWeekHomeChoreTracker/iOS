@@ -21,6 +21,7 @@ struct ChoreRepresentation: Codable {
     var childId: Int
     var cleanStreak: Int?
     var comments: String?
+    var completed: Int
     var dueDate: String?
     var id: Int
     var image: Data?
@@ -35,6 +36,7 @@ struct ChoreRepresentation: Codable {
         case childId = "child_id"
         case cleanStreak
         case comments
+        case completed
         case dueDate = "due_date"
         case id
         case image = "photo_obj"
@@ -45,7 +47,18 @@ struct ChoreRepresentation: Codable {
         
     }
     
-    init(bonusPoints: Int?, childId: Int, cleanStreak: Int?, comments: String?, dueDate: String, id: Int, image: Data?, information: String, parentId: Int, score: Int?, title: String) {
+    init(bonusPoints: Int?,
+         childId: Int,
+         cleanStreak: Int?,
+         comments: String?,
+         completed: Int,
+         dueDate: String,
+         id: Int,
+         image: Data?,
+         information: String,
+         parentId: Int,
+         score: Int?,
+         title: String) {
         self.bonusPoints = bonusPoints
         self.cleanStreak = cleanStreak
         self.comments = comments
@@ -57,6 +70,7 @@ struct ChoreRepresentation: Codable {
         self.score = score
         self.title = title
         self.childId = childId
+        self.completed = completed
     }
     
     var dateFromString: Date {
@@ -64,7 +78,7 @@ struct ChoreRepresentation: Codable {
         df.dateStyle = .short
         #warning("This may have to change depending on how the front end guys format their date. It's just a string on the API side")
         df.timeStyle = .none
-        guard let date = df.date(from: self.dueDate ?? "12-12-1970") else {return Date()}
+        guard let date = df.date(from: self.dueDate ?? "12-12-1970") else { return Date() }
         return date
     }
 }
