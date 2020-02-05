@@ -13,16 +13,16 @@ class ChildController {
         self.networkLoader = networkLoader
     }
     
-//MARK: Auth
-    func login(with username: String, and password: String, complete: @escaping NetworkService.CompletionWithError = {error in}) {
+    // MARK: - Auth
+    func login(with username: String, and password: String, complete: @escaping NetworkService.CompletionWithError = { error in }) {
         guard let request = createRequestAndEncodeUser(user: User(username: username, password: password),
                                                        url: loginURL,
                                                        method: .post,
                                                        headerType: .contentType,
                                                        headerValue: .json) else {
-            let error = NSError(domain: "ChildController.login.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
-            complete(error)
-            return
+                                                        let error = NSError(domain: "ChildController.login.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
+                                                        complete(error)
+                                                        return
         }
         
         networkLoader.loadData(using: request) { data, response, error in
@@ -63,11 +63,11 @@ class ChildController {
         }
     }
     
-    //MARK: Read
+    // MARK: - Read
     /**
      Get a child from the API - currently unused
      */
-    func getChild(complete: @escaping NetworkService.CompletionWithError  = {error in}) {
+    func getChild(complete: @escaping NetworkService.CompletionWithError  = { error in }) {
         guard var request = NetworkService.createRequest(url: choreURL, method: .get, headerType: .contentType, headerValue: .json) else {
             let error = NSError(domain: "ChildController.getChild.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
             complete(error)
@@ -97,7 +97,7 @@ class ChildController {
         }
     }
     
-    func getChores(complete: @escaping NetworkService.CompletionWithError  = {error in}) {
+    func getChores(complete: @escaping NetworkService.CompletionWithError  = { error in }) {
         guard let bearer = bearer else {
             let error = NSError(domain: "ChildController.bearer", code: NetworkService.NetworkError.unauth.rawValue)
             complete(error)
@@ -187,11 +187,11 @@ class ChildController {
         return postRequest
     }
     
-    //MARK: Update
+    // MARK: - Update
     /**
      Update chore on the API
      */
-    func updateAPIChore(_ chore: Chore, complete: @escaping NetworkService.CompletionWithError  = {error in}) {
+    func updateAPIChore(_ chore: Chore, complete: @escaping NetworkService.CompletionWithError  = { error in }) {
         guard let bearer = bearer else {
             let error = NSError(domain: "ChildController.bearer", code: NetworkService.NetworkError.unauth.rawValue)
             complete(error)
@@ -206,7 +206,7 @@ class ChildController {
         }
         request.addValue(bearer.token, forHTTPHeaderField: NetworkService.HttpHeaderType.authorization.rawValue)
         
-        URLSession.shared.dataTask(with: request) { (_, _, error) in
+        URLSession.shared.dataTask(with: request) { _, _, error in
             if let error = error {
                 complete(error)
                 return
@@ -225,13 +225,14 @@ class ChildController {
         updateMOCChore(chore, context: context)
     }
     
-    //MARK: MOCK DATA
+    // MARK: - MOCK DATA
     let mockChild = Child(id: 9001, name: "Johnny Appleseed", parentName: "Paul Bunyon")
-    let mockChore = Chore(bonusPoints: 5,
+    let mockChore = Chore(id: 1,
+                          parentId: 1,
+                          title: "Chop some trees",
+                          bonusPoints: 5,
                           cleanStreak: 7,
                           dueDate: Date(timeIntervalSinceNow: 900),
-                          id: 1, information: "Chop them well",
-                          parentId: 1, score: 9000,
-                          title: "Chop some trees")
-
+                          information: "Chop them well",
+                          score: 9000)
 }

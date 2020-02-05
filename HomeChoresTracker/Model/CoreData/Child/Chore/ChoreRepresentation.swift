@@ -45,7 +45,17 @@ struct ChoreRepresentation: Codable {
         
     }
     
-    init(bonusPoints: Int?, childId: Int, cleanStreak: Int?, comments: String?, dueDate: String, id: Int, image: Data?, information: String, parentId: Int, score: Int?, title: String) {
+    init(bonusPoints: Int?,
+         childId: Int,
+         cleanStreak: Int?,
+         comments: String?,
+         dueDate: String,
+         id: Int,
+         image: Data?,
+         information: String,
+         parentId: Int,
+         score: Int?,
+         title: String) {
         self.bonusPoints = bonusPoints
         self.cleanStreak = cleanStreak
         self.comments = comments
@@ -64,7 +74,7 @@ struct ChoreRepresentation: Codable {
         df.dateStyle = .short
         #warning("This may have to change depending on how the front end guys format their date. It's just a string on the API side")
         df.timeStyle = .none
-        guard let date = df.date(from: self.dueDate ?? "12-12-1970") else {return Date()}
+        guard let date = df.date(from: self.dueDate ?? "12-12-1970") else { return Date() }
         return date
     }
 }

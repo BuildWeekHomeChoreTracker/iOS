@@ -20,7 +20,7 @@ extension Child {
         for chore in chores {
             if let chore = chore as? Chore {
                 choreReps.append(ChoreRepresentation(bonusPoints: Int(chore.bonusPoints),
-                                                     childId: Int(chore.childId),
+                                                     childId: Int(chore.id),
                                                      cleanStreak: Int(chore.cleanStreak),
                                                      comments: chore.comments,
                                                      dueDate: chore.dateString,
