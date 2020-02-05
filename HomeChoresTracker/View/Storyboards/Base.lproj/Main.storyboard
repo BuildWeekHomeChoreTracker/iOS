@@ -20,6 +20,7 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qcz-vU-FsZ">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Username"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="IGD-Oa-CUb"/>
                                         </constraints>
@@ -28,6 +29,7 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KjK-a4-6wB">
                                         <rect key="frame" x="0.0" y="58" width="382" height="44"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Password"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="xgV-b3-L3G"/>
                                         </constraints>

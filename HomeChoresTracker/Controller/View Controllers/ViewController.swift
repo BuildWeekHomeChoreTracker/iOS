@@ -27,6 +27,8 @@ class ViewController: UIViewController, SegueHandler {
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
@@ -60,5 +62,11 @@ class ViewController: UIViewController, SegueHandler {
             }
             self.performSegue(withIdentifier: .showChoreSegue)
         }
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }
