@@ -216,13 +216,22 @@ class ChildController {
         
     }
     
-    func updateMOCChore(_ chore: Chore, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        //save changes on disk
+    func completeChore(_ chore: Chore) {
+        chore.completed = 1
+        updateChore(chore)
     }
     
-    func updateChore(_ chore: Chore, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    private func updateMOCChore(_ context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        do {
+            try CoreDataStack.shared.save(context)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func updateChore(_ chore: Chore, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         updateAPIChore(chore)
-        updateMOCChore(chore, context: context)
+        updateMOCChore(context)
     }
     
     // MARK: - MOCK DATA

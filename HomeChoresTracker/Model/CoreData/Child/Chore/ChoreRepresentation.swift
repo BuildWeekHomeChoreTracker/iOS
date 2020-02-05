@@ -21,6 +21,7 @@ struct ChoreRepresentation: Codable {
     var childId: Int
     var cleanStreak: Int?
     var comments: String?
+    var completed: Int
     var dueDate: String?
     var id: Int
     var image: Data?
@@ -35,6 +36,7 @@ struct ChoreRepresentation: Codable {
         case childId = "child_id"
         case cleanStreak
         case comments
+        case completed
         case dueDate = "due_date"
         case id
         case image = "photo_obj"
@@ -49,6 +51,7 @@ struct ChoreRepresentation: Codable {
          childId: Int,
          cleanStreak: Int?,
          comments: String?,
+         completed: Int,
          dueDate: String,
          id: Int,
          image: Data?,
@@ -67,6 +70,7 @@ struct ChoreRepresentation: Codable {
         self.score = score
         self.title = title
         self.childId = childId
+        self.completed = completed
     }
     
     var dateFromString: Date {

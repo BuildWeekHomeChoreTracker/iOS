@@ -18,6 +18,7 @@ extension Chore {
             childId: Int(id),
             cleanStreak: Int(cleanStreak),
             comments: comments,
+            completed: Int(completed),
             dueDate: dateString,
             id: Int(id),
             image: image,
@@ -33,8 +34,8 @@ extension Chore {
         let df = DateFormatter()
         df.dateStyle = .short
         df.timeStyle = .none
-        let date = df.string(from: self.dueDate ?? Date())
-        return date
+        let dateString = df.string(from: self.dueDate ?? Date())
+        return dateString
     }
     
     // MARK: - Init
@@ -44,6 +45,7 @@ extension Chore {
                       bonusPoints: Int16? = nil,
                       cleanStreak: Int16? = nil,
                       comments: String? = nil,
+                      completed: Int16 = 0,
                       dueDate: Date? = nil,
                       image: Data? = nil,
                       information: String? = nil,
@@ -51,9 +53,15 @@ extension Chore {
                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)
-        self.bonusPoints = bonusPoints ?? 0
+        self.parentId = parentId
         self.title = title
+        self.bonusPoints = bonusPoints ?? 0
+        self.cleanStreak = cleanStreak ?? 0
+        self.comments = comments
+        self.completed = completed
+        self.dueDate = dueDate
         self.image = image
+        self.information = information
         if let score = score {
             self.score = score
         }
@@ -67,6 +75,7 @@ extension Chore {
                   bonusPoints: Int16(representation.bonusPoints ?? 0),
                   cleanStreak: Int16(representation.cleanStreak ?? 0),
                   comments: representation.comments,
+                  completed: Int16(representation.completed),
                   dueDate: representation.dateFromString,
                   image: representation.image,
                   information: representation.information,
