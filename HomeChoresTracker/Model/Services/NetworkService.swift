@@ -12,6 +12,7 @@ import Foundation
 Bearer token for logged in user
  */
 struct Bearer: Codable {
+    let message: String
     let token: String
 }
 
@@ -131,10 +132,10 @@ class NetworkService {
                 let child = try decoder.decode(ChildRepresentation.self, from: data)
                 return child
             case is Bearer.Type:
-                let token = try decoder.decode(Bearer.self, from: data)
-                return token
-            case is ChoreRepresentation.Type:
-                let chores = try decoder.decode([ChoreRepresentation].self, from: data)
+                let bearer = try decoder.decode(Bearer.self, from: data)
+                return bearer
+            case is AllChores.Type:
+                let chores = try decoder.decode(AllChores.self, from: data)
                 return chores
             default: fatalError("type \(String(describing: type)) is not defined locally in decode function")
             }

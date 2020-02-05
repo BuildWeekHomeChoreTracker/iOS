@@ -8,6 +8,14 @@
 
 import Foundation
 
+struct AllChores: Decodable {
+    var chores: [ChoreRepresentation] // "chore:[ChoreRepresentation]
+    
+    enum CodingKeys: String, CodingKey {
+        case chores = "chore"
+    }
+}
+
 struct ChoreRepresentation: Codable {
     var bonusPoints: Int?
     var cleanStreak: Int?
@@ -21,7 +29,7 @@ struct ChoreRepresentation: Codable {
     var title: String
     
     enum CodingKeys: String, CodingKey {
-        case id = "id"
+        case id = "child_id"
         case image = "photo_obj"
         case score = "chore_score"
         case title = "name"
