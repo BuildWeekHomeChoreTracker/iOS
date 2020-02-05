@@ -18,6 +18,7 @@ struct AllChores: Decodable {
 
 struct ChoreRepresentation: Codable {
     var bonusPoints: Int?
+    var childId: Int
     var cleanStreak: Int?
     var comments: String?
     var dueDate: String?
@@ -28,8 +29,10 @@ struct ChoreRepresentation: Codable {
     var score: Int?
     var title: String
     
+    
     enum CodingKeys: String, CodingKey {
         case bonusPoints = "bonus_pts"
+        case childId = "child_id"
         case cleanStreak
         case comments
         case dueDate = "due_date"
@@ -39,9 +42,10 @@ struct ChoreRepresentation: Codable {
         case parentId = "parent_id"
         case score = "chore_score"
         case title = "name"
+        
     }
     
-    init(bonusPoints: Int?, cleanStreak: Int?, comments: String?, dueDate: String, id: Int, image: Data?, information: String, parentId: Int, score: Int?, title: String) {
+    init(bonusPoints: Int?, childId: Int, cleanStreak: Int?, comments: String?, dueDate: String, id: Int, image: Data?, information: String, parentId: Int, score: Int?, title: String) {
         self.bonusPoints = bonusPoints
         self.cleanStreak = cleanStreak
         self.comments = comments
@@ -52,6 +56,7 @@ struct ChoreRepresentation: Codable {
         self.parentId = parentId
         self.score = score
         self.title = title
+        self.childId = childId
     }
     
     var dateFromString: Date {

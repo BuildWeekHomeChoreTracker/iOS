@@ -25,7 +25,7 @@ class NetworkingTests: XCTestCase {
         
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
-        controller.getChores { error in
+        controller.apiChores { error in
             XCTAssertNil(error)
             XCTAssert(!controller.chores.isEmpty)
             choresExpectation.fulfill()
@@ -43,7 +43,7 @@ class NetworkingTests: XCTestCase {
         controller.bearer = Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYXQiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vnFsyeKykP0e5cmntO7Jyc274X5zH1PbR3MYTYoA")
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
-        controller.getChores { error in
+        controller.apiChores { error in
             XCTAssertNil(error)
             XCTAssert(!controller.chores.isEmpty)
             choresExpectation.fulfill()
@@ -63,7 +63,7 @@ class NetworkingTests: XCTestCase {
         controller.bearer = Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYXQiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vnFsyeKykP0e5cmntO7Jyc274X5zH1PbR3MYTYoA")
         let choresExpectation = expectation(description: "Waititng for chores to load")
         
-        controller.getChores { error in
+        controller.apiChores { error in
             if let error = error {
                 XCTAssertNotNil(error)
             }
@@ -83,7 +83,7 @@ class NetworkingTests: XCTestCase {
         controller.bearer = Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYXQiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vnFsyeKykP0e5cmntO7Jyc274X5zH1PbR3MYTYoA")
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
-        controller.getChores { error in
+        controller.apiChores { error in
             XCTAssertNil(error)
             XCTAssert(controller.chores.isEmpty)
             choresExpectation.fulfill()

@@ -15,6 +15,7 @@ extension Chore {
     var choreRepresentation: ChoreRepresentation? {
         let rep = ChoreRepresentation(
             bonusPoints: Int(bonusPoints),
+            childId: Int(id),
             cleanStreak: Int(cleanStreak),
             comments: comments,
             dueDate: dateString,
