@@ -13,6 +13,7 @@ class HomeChoreTrackerUITests: XCTestCase {
     var app: XCUIApplication!
 
     override func setUp() {
+        super.setUp()
         app = XCUIApplication()
         app.launch()
     }
@@ -22,9 +23,9 @@ class HomeChoreTrackerUITests: XCTestCase {
         let password = app.secureTextFields["Password"]
         
         username.tap()
-        username.typeText("bobbyrocks\n")
+        username.typeText("joshd\n")
         password.tap()
-        password.typeText("test24\n")
+        password.typeText("test1\n")
         app.buttons["Sign In"].tap()
         
         let exp = expectation(description: "Waiting for segue")
@@ -42,9 +43,9 @@ class HomeChoreTrackerUITests: XCTestCase {
         let password = app.secureTextFields["Password"]
         
         username.tap()
-        username.typeText("bobbyrocks\n")
+        username.typeText("joshd\n")
         password.tap()
-        password.typeText("test24\n")
+        password.typeText("test1\n")
         app.buttons["Sign In"].tap()
         
         let exp = expectation(description: "Waiting for segue")

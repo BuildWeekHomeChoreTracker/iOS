@@ -20,7 +20,7 @@ class FetchChoresOperation: ConcurrentOperation {
         childController.getChores { error in
             defer { self.state = .isFinished }
             
-            if let _ = error {
+            if error != nil {
                 return
             }
         }

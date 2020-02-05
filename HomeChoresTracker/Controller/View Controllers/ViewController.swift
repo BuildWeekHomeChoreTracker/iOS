@@ -12,13 +12,14 @@ class ViewController: UIViewController, SegueHandler {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Outlets
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
     let childController = ChildController()
     var child: Child?
+    
     enum SegueIdentifier: String {
         case showChoreSegue = "ShowChoreSegue"
     }

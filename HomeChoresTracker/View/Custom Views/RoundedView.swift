@@ -22,6 +22,7 @@ class RoundedView: UIView {
     }
     
     override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
         sharedInit()
     }
     

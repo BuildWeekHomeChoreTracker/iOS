@@ -15,11 +15,21 @@ extension Child {
         guard let name = name,
             let parentName = parentName,
             let chores = chores
-        else {return nil}
+        else { return nil }
         var choreReps = [ChoreRepresentation]()
         for chore in chores {
             if let chore = chore as? Chore {
-                choreReps.append(ChoreRepresentation(bonusPoints: Int(chore.bonusPoints), childId: Int(chore.childId), cleanStreak: Int(chore.cleanStreak), comments: chore.comments, dueDate: chore.dateString, id: Int(chore.id), image: chore.image, information: chore.information ?? "No Description Given", parentId: Int(chore.parentId), score: Int(chore.score), title: chore.title ?? "No Title"))
+                choreReps.append(ChoreRepresentation(bonusPoints: Int(chore.bonusPoints),
+                                                     childId: Int(chore.childId),
+                                                     cleanStreak: Int(chore.cleanStreak),
+                                                     comments: chore.comments,
+                                                     dueDate: chore.dateString,
+                                                     id: Int(chore.id),
+                                                     image: chore.image,
+                                                     information: chore.information ?? "No Description Given",
+                                                     parentId: Int(chore.parentId),
+                                                     score: Int(chore.score),
+                                                     title: chore.title ?? "No Title"))
             }
         }
         return ChildRepresentation(id: Int(childId), name: name, parentName: parentName)

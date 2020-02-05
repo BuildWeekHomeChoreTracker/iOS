@@ -15,7 +15,7 @@ class NetworkingTests: XCTestCase {
         let controller = ChildController()
         let loginExpectation = expectation(description: "Waiting to login")
         
-        controller.login(with: "bobbyrocks", and: "test24") { error in
+        controller.login(with: "joshd", and: "test1") { error in
             XCTAssertNil(error)
             loginExpectation.fulfill()
         }
@@ -32,7 +32,7 @@ class NetworkingTests: XCTestCase {
         }
         
         wait(for: [choresExpectation], timeout: 10)
-        XCTAssertTrue(controller.chores.count > 0)
+        XCTAssertTrue(!controller.chores.isEmpty)
     }
     
     func testfetchMockChores() {
@@ -40,7 +40,12 @@ class NetworkingTests: XCTestCase {
         mock.data = goodChores
         
         let controller = ChildController(networkLoader: mock)
-        controller.bearer = Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYXQiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vnFsyeKykP0e5cmntO7Jyc274X5zH1PbR3MYTYoA")
+        controller.bearer = Bearer(message: "1", token: """
+                eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+                eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYX
+                QiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vn
+                FsyeKykP0e5cmntO7Jyc274X5zH1PbR3MYTYoA
+                """)
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
         controller.apiChores { error in
@@ -50,7 +55,7 @@ class NetworkingTests: XCTestCase {
         }
         
         wait(for: [choresExpectation], timeout: 2)
-        XCTAssertTrue(controller.chores.count > 0)
+        XCTAssertTrue(!controller.chores.isEmpty)
         XCTAssertEqual(controller.chores[0].title, "wash dishes")
         XCTAssertEqual(controller.chores[0].score, 5)
     }
@@ -60,7 +65,12 @@ class NetworkingTests: XCTestCase {
         mock.data = badChores
         
         let controller = ChildController(networkLoader: mock)
-        controller.bearer = Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYXQiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vnFsyeKykP0e5cmntO7Jyc274X5zH1PbR3MYTYoA")
+        controller.bearer = Bearer(message: "1", token: """
+                eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+                eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYX
+                QiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vn
+                FsyeKykP0e5cmntO7Jyc274X5zH1PbR3MYTYoA
+                """)
         let choresExpectation = expectation(description: "Waititng for chores to load")
         
         controller.apiChores { error in
@@ -72,7 +82,7 @@ class NetworkingTests: XCTestCase {
         }
         
         wait(for: [choresExpectation], timeout: 2)
-        XCTAssertFalse(controller.chores.count > 0)
+        XCTAssertFalse(!controller.chores.isEmpty)
     }
     
     func testGoodFetchNoMockData() {
@@ -80,7 +90,12 @@ class NetworkingTests: XCTestCase {
         mock.data = noChores
         
         let controller = ChildController(networkLoader: mock)
-        controller.bearer = Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYXQiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vnFsyeKykP0e5cmntO7Jyc274X5zH1PbR3MYTYoA")
+        controller.bearer = Bearer(message: "1", token: """
+                eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+                eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYX
+                QiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vn
+                FsyeKykP0e5cmntO7Jyc274X5zH1PbR3MYTYoA
+                """)
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
         controller.apiChores { error in
@@ -90,6 +105,6 @@ class NetworkingTests: XCTestCase {
         }
         
         wait(for: [choresExpectation], timeout: 2)
-        XCTAssertFalse(controller.chores.count > 0)
+        XCTAssertFalse(!controller.chores.isEmpty)
     }
 }
