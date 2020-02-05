@@ -14,7 +14,7 @@ class MockLoader: NetworkDataLoader {
     var response: HTTPURLResponse?
     var error: Error?
     
-    func loadData(using request: URLRequest, completion: @escaping (Data?, HTTPURLResponse?, Error?) -> ()) {
+    func loadData(using request: URLRequest, completion: @escaping (Data?, HTTPURLResponse?, Error?) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completion(self.data, self.response, self.error)
         }

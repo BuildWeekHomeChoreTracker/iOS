@@ -12,7 +12,16 @@ import XCTest
 class ChoreTests: XCTestCase {
     
     func testChoreCreation() {
-        let choreRep = ChoreRepresentation(image: nil, score: 5, title: "Wash Clothes")
+        let choreRep = ChoreRepresentation(bonusPoints: 5,
+                                           cleanStreak: 5,
+                                           comments: "",
+                                           dueDate: "",
+                                           id: 1,
+                                           image: nil,
+                                           information: "",
+                                           parentId: 4,
+                                           score: 5,
+                                           title: "Wash Clothes")
         XCTAssertEqual(choreRep.title, "Wash Clothes")
         let chore = Chore(representation: choreRep)
         XCTAssertEqual(chore?.title, choreRep.title)

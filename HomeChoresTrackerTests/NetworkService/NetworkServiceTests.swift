@@ -15,7 +15,7 @@ class NetworkServiceTests: XCTestCase {
         let request = URLRequest(url: URL(string: "https://chore-tracker1.herokuapp.com/api/chore")!)
         let child = ChildRepresentation(name: "Bobby", parentName: "Dave", cleanStreak: 5, chores: [])
         let status = NetworkService.encode(from: child.self, request: request)
-        let childData = try! JSONEncoder().encode(child)
+        let childData = try? JSONEncoder().encode(child)
         XCTAssertEqual(status.request?.httpBody, childData)
     }
     
@@ -24,16 +24,19 @@ class NetworkServiceTests: XCTestCase {
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let createdRequest = NetworkService.createRequest(url: URL(string: "https://chore-tracker1.herokuapp.com/api/chore"), method: .get, headerType: .contentType, headerValue: .json)
+        let createdRequest = NetworkService.createRequest(url: URL(string: "https://chore-tracker1.herokuapp.com/api/chore"),
+                                                          method: .get,
+                                                          headerType: .contentType,
+                                                          headerValue: .json)
         
         XCTAssertEqual(request, createdRequest)
     }
     
     func testDecodeChild() {
         let choreData = goodChores
-        let chores = NetworkService.decode(to: ChoreRepresentation.self, data: choreData) as! [ChoreRepresentation]
+        let chores = NetworkService.decode(to: AllChores.self, data: choreData) as? AllChores
         XCTAssertNotNil(chores)
-        XCTAssert(chores.count > 0)
-        XCTAssertEqual(chores.last?.title, "clean room")
+        XCTAssert(!(chores?.chores.isEmpty)!)
+        XCTAssertEqual(chores?.chores.last?.title, "Rake Yard")
     }
 }

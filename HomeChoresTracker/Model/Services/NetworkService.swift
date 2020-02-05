@@ -17,11 +17,11 @@ struct Bearer: Codable {
 }
 
 class NetworkService {
-    //MARK: Completion Handlers
-    typealias CompletionWithError = (Error?) -> ()
-    typealias Complete = () -> ()
+    // MARK: - Completion Handlers
+    typealias CompletionWithError = (Error?) -> Void
+    typealias Complete = () -> Void
     
-    //MARK: Network Error Codes
+    // MARK: - Network Error Codes
     enum NetworkError: Int {
         case badRequest = 400
         case unauth = 401
@@ -33,7 +33,7 @@ class NetworkService {
         case badDecode = 999
     }
     
-    //MARK: Request parameters
+    // MARK: - Request parameters
     enum HttpMethod: String {
         case get = "GET"
         case post = "POST"
@@ -64,7 +64,7 @@ class NetworkService {
         let error: Error?
     }
     
-    //MARK: Methods
+    // MARK: - Methods
     
     /**
      Create a request given a URL and HTTP Request Method

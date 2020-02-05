@@ -12,10 +12,10 @@ class ChoresTableViewCell: UITableViewCell {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Outlets
-    @IBOutlet weak var choreImageView: UIImageView!
-    @IBOutlet weak var choreTitleLabel: UILabel!
-    @IBOutlet weak var dueDateLabel: UILabel!
-    @IBOutlet weak var choreScoreLabel: UILabel!
+    @IBOutlet private weak var choreImageView: UIImageView!
+    @IBOutlet private weak var choreTitleLabel: UILabel!
+    @IBOutlet private weak var dueDateLabel: UILabel!
+    @IBOutlet private weak var choreScoreLabel: UILabel!
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties

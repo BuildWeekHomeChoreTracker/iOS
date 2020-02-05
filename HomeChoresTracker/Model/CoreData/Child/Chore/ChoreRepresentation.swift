@@ -57,7 +57,7 @@ struct ChoreRepresentation: Codable {
         let df = DateFormatter()
         df.dateStyle = .short
         df.timeStyle = .short
-        guard let date = df.date(from: self.dueDate ?? "12-12-1970") else {return Date()}
+        guard let date = df.date(from: self.dueDate ?? "12-12-1970") else { return Date() }
         return date
     }
     
