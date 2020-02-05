@@ -31,7 +31,7 @@ extension Chore {
     var dateString: String {
         let df = DateFormatter()
         df.dateStyle = .short
-        df.timeStyle = .short
+        df.timeStyle = .none
         let date = df.string(from: self.dueDate ?? Date())
         return date
     }

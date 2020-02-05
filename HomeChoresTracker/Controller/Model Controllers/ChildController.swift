@@ -97,7 +97,8 @@ class ChildController {
             complete(error)
             return
         }
-        let childChoreURL = choreURL?.appendingPathComponent(bearer.message)
+        
+        let childChoreURL = choreURL?.appendingPathComponent(bearer.id)
         guard var request = NetworkService.createRequest(url: childChoreURL, method: .get, headerType: .contentType, headerValue: .json) else {
             let error = NSError(domain: "ChildController.getChores.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
             complete(error)
