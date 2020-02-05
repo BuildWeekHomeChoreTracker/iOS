@@ -3,7 +3,7 @@ import CoreData
 
 class ChildController {
     private let loginURL = URL(string: "https://chore-tracker1.herokuapp.com/api/auth/login/child")
-    private let choreURL = URL(string: "https://chore-tracker1.herokuapp.com/api/chore")
+    private let choreURL = URL(string: "https://chore-tracker1.herokuapp.com/api/auth/child")
     var bearer: Bearer?
     var child: Child?
     var chores = [ChoreRepresentation]()
@@ -92,17 +92,19 @@ class ChildController {
     }
     
     func getChores(complete: @escaping NetworkService.CompletionWithError) {
-        guard var request = NetworkService.createRequest(url: choreURL, method: .get, headerType: .contentType, headerValue: .json) else {
-            let error = NSError(domain: "ChildController.getChores.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
-            complete(error)
-            return
-        }
-        
         guard let bearer = bearer else {
             let error = NSError(domain: "ChildController.bearer", code: NetworkService.NetworkError.unauth.rawValue)
             complete(error)
             return
         }
+        let childChoreURL = choreURL?.appendingPathComponent(bearer.message)
+        guard var request = NetworkService.createRequest(url: childChoreURL, method: .get, headerType: .contentType, headerValue: .json) else {
+            let error = NSError(domain: "ChildController.getChores.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
+            complete(error)
+            return
+        }
+        
+        
         
         request.setValue(bearer.token, forHTTPHeaderField: NetworkService.HttpHeaderType.authorization.rawValue)
         networkLoader.loadData(using: request) { data, response, error in
@@ -129,7 +131,7 @@ class ChildController {
                 return
             }
             
-            guard let anyChores = NetworkService.decode(to: ChoreRepresentation.self, data: data) else {
+            guard let jsonChores = NetworkService.decode(to: AllChores.self, data: data) else {
                 let error = NSError(domain: "ChildController.getChild.decodeData", code: NetworkService.NetworkError.badDecode.rawValue)
                 DispatchQueue.main.async {
                     complete(error)
@@ -137,8 +139,9 @@ class ChildController {
                 return
             }
             
-            if let chores = anyChores as? [ChoreRepresentation] {
-                self.chores = chores
+            
+            if let jsonChores = jsonChores as? AllChores {
+                self.chores = jsonChores.chores
                 DispatchQueue.main.async {
                     complete(nil)
                 }
@@ -177,6 +180,6 @@ class ChildController {
     }
     
     //MARK: MOCK DATA
-    let mockChild = Child(name: "Johnny Appleseed", parentName: "Paul Bunyon", cleanStreak: 9001) //over 9000 god I'm funny
-    let mockChore = Chore(title: "Chop down some trees")!
+    let mockChild = Child(name: "Johnny Appleseed", parentName: "Paul Bunyon")
+    let mockChore = Chore(bonusPoints: 5, cleanStreak: 7, dueDate: Date(timeIntervalSinceNow: 900), id: 1, information: "Chop them well", parentId: 1, score: 9000, title: "Chop some trees")
 }

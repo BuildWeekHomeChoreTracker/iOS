@@ -19,22 +19,19 @@ extension Child {
         var choreReps = [ChoreRepresentation]()
         for chore in chores {
             if let chore = chore as? Chore {
-                choreReps.append(ChoreRepresentation(image: chore.image, score: Int(chore.score), title: chore.title ?? ""))
+                choreReps.append(ChoreRepresentation(bonusPoints: Int(chore.bonusPoints ?? 0), cleanStreak: Int(chore.cleanStreak ?? 0), comments: chore.comments, dueDate: chore.dateString, id: Int(chore.id), image: chore.image, information: chore.information ?? "No Description Given", parentId: Int(chore.parentId), score: Int(chore.score), title: chore.title ?? "No Title"))
             }
         }
-        return ChildRepresentation(name: name, parentName: parentName, cleanStreak: Int(cleanStreak), chores: choreReps)
+        return ChildRepresentation(name: name, parentName: parentName, chores: choreReps)
     }
     
-    convenience init?(name: String, parentName: String, cleanStreak: Int?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init?(name: String, parentName: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.name = name
         self.parentName = parentName
-        if let cleanStreak = cleanStreak {
-            self.cleanStreak = Int16(cleanStreak)
-        }
     }
     
     convenience init?(representation: ChildRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        self.init(name: representation.name, parentName: representation.parentName, cleanStreak: representation.cleanStreak, context: context)
+        self.init(name: representation.name, parentName: representation.parentName, context: context)
     }
 }
