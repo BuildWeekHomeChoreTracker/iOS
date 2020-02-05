@@ -11,8 +11,11 @@
 		634654AF23EA0A6C002E792B /* ChildTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634654AE23EA0A6C002E792B /* ChildTests.swift */; };
 		634654B123EA0BFF002E792B /* ChoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634654B023EA0BFF002E792B /* ChoreTests.swift */; };
 		634654B423EA11CE002E792B /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634654B323EA11CE002E792B /* NetworkServiceTests.swift */; };
+		634C32A723EB362E00BAEBEA /* ChoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C32A623EB362E00BAEBEA /* ChoreDetailViewController.swift */; };
+		634C32AA23EB422300BAEBEA /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C32A923EB422300BAEBEA /* UIDevice+Ext.swift */; };
 		634D42DA23EA1F6C00A6D53E /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D42D923EA1F6C00A6D53E /* ConcurrentOperation.swift */; };
 		634D42DC23EA1F7F00A6D53E /* FetchChoresOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D42DB23EA1F7F00A6D53E /* FetchChoresOperation.swift */; };
+		63575F0F23EB308A00A1B556 /* RoundedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63575F0E23EB308A00A1B556 /* RoundedPhotoView.swift */; };
 		637703F623E9B6C20076C177 /* ChoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703F523E9B6C20076C177 /* ChoresTableViewController.swift */; };
 		637703F923E9B79A0076C177 /* ChoresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703F823E9B79A0076C177 /* ChoresTableViewCell.swift */; };
 		637703FC23E9B9770076C177 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637703FB23E9B9770076C177 /* String+Ext.swift */; };
@@ -64,8 +67,11 @@
 		634654AE23EA0A6C002E792B /* ChildTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildTests.swift; sourceTree = "<group>"; };
 		634654B023EA0BFF002E792B /* ChoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTests.swift; sourceTree = "<group>"; };
 		634654B323EA11CE002E792B /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		634C32A623EB362E00BAEBEA /* ChoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreDetailViewController.swift; sourceTree = "<group>"; };
+		634C32A923EB422300BAEBEA /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		634D42D923EA1F6C00A6D53E /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		634D42DB23EA1F7F00A6D53E /* FetchChoresOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChoresOperation.swift; sourceTree = "<group>"; };
+		63575F0E23EB308A00A1B556 /* RoundedPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPhotoView.swift; sourceTree = "<group>"; };
 		637703F523E9B6C20076C177 /* ChoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresTableViewController.swift; sourceTree = "<group>"; };
 		637703F823E9B79A0076C177 /* ChoresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresTableViewCell.swift; sourceTree = "<group>"; };
 		637703FB23E9B9770076C177 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 			children = (
 				637703FB23E9B9770076C177 /* String+Ext.swift */,
 				63FEDF7C23E9EE2700BCA319 /* URLSession+NetworkDataLoader.swift */,
+				634C32A923EB422300BAEBEA /* UIDevice+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -199,6 +206,7 @@
 			children = (
 				639366B423E8AA0300683D1F /* RoundedButton.swift */,
 				63F3EA2523E8B21500BF4AAF /* RoundedView.swift */,
+				63575F0E23EB308A00A1B556 /* RoundedPhotoView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -283,6 +291,7 @@
 			children = (
 				B90B32AF23E892F9003899D8 /* ViewController.swift */,
 				637703F523E9B6C20076C177 /* ChoresTableViewController.swift */,
+				634C32A623EB362E00BAEBEA /* ChoreDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -549,10 +558,12 @@
 			files = (
 				6377040023E9BAD70076C177 /* SegueHandler.swift in Sources */,
 				637703FC23E9B9770076C177 /* String+Ext.swift in Sources */,
+				63575F0F23EB308A00A1B556 /* RoundedPhotoView.swift in Sources */,
 				63F3EA2623E8B21500BF4AAF /* RoundedView.swift in Sources */,
 				B90B32B023E892F9003899D8 /* ViewController.swift in Sources */,
 				B90B32AC23E892F8003899D8 /* AppDelegate.swift in Sources */,
 				63FEDF7B23E9ED7B00BCA319 /* NetworkDataLoader.swift in Sources */,
+				634C32AA23EB422300BAEBEA /* UIDevice+Ext.swift in Sources */,
 				B90B32FF23E8D19A003899D8 /* Chore+convenience.swift in Sources */,
 				B90B330023E8D19A003899D8 /* ChoreRepresentation.swift in Sources */,
 				634D42DC23EA1F7F00A6D53E /* FetchChoresOperation.swift in Sources */,
@@ -567,6 +578,7 @@
 				B90B32FC23E8D18F003899D8 /* Child+convenience.swift in Sources */,
 				637703F923E9B79A0076C177 /* ChoresTableViewCell.swift in Sources */,
 				639366B523E8AA0300683D1F /* RoundedButton.swift in Sources */,
+				634C32A723EB362E00BAEBEA /* ChoreDetailViewController.swift in Sources */,
 				B90B32D023E89455003899D8 /* ChildController.swift in Sources */,
 				B90B32AE23E892F9003899D8 /* SceneDelegate.swift in Sources */,
 			);

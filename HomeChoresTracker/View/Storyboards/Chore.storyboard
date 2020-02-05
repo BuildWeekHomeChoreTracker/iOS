@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,10 +11,10 @@
         <scene sceneID="7xW-MO-S9c">
             <objects>
                 <tableViewController id="pyn-yp-GH6" customClass="ChoresTableViewController" customModule="HomeChoresTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CgY-Ic-5WJ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CgY-Ic-5WJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.75255065639269403" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChoreCell" rowHeight="120" id="TwC-jW-Oek" customClass="ChoresTableViewCell" customModule="HomeChoresTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="120"/>
@@ -28,19 +29,25 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NZk-de-D9T">
                                                     <rect key="frame" x="74" y="14" width="284" height="69"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Yi7-9c-Aw0">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Yi7-9c-Aw0">
                                                             <rect key="frame" x="0.0" y="0.0" width="264" height="69"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Chore Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ncy-Mw-ZKn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="27.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                                    <color key="textColor" red="1" green="0.70630693440000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1V-mN-rwD">
-                                                                    <rect key="frame" x="0.0" y="43.5" width="90.5" height="25.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="u1V-mN-rwD">
+                                                                    <rect key="frame" x="0.0" y="24.5" width="90.5" height="20"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                                    <color key="textColor" red="1" green="0.70630693440000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="G8E-ks-wig">
+                                                                    <rect key="frame" x="0.0" y="49.5" width="90.5" height="19.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -48,7 +55,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJC-ds-OOD">
                                                             <rect key="frame" x="264" y="16.5" width="20" height="36"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                            <color key="textColor" red="1" green="0.70630693440000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -82,11 +89,13 @@
                                         <constraint firstAttribute="trailing" secondItem="5Nm-x4-Ld9" secondAttribute="trailing" constant="20" id="xH6-yh-6fX"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="choreImageView" destination="A9j-NT-DV8" id="IrM-3W-XMy"/>
                                     <outlet property="choreScoreLabel" destination="nJC-ds-OOD" id="fFF-GG-4G1"/>
                                     <outlet property="choreTitleLabel" destination="ncy-Mw-ZKn" id="fdm-rP-cOV"/>
-                                    <outlet property="dueDateLabel" destination="u1V-mN-rwD" id="a3n-hl-lmc"/>
+                                    <outlet property="dueDateLabel" destination="G8E-ks-wig" id="AYc-yX-uFt"/>
+                                    <segue destination="7Pz-Hd-lea" kind="show" identifier="ShowChoreDetailSegue" id="bOK-UD-lsr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -101,6 +110,90 @@
             </objects>
             <point key="canvasLocation" x="1234.7826086956522" y="154.6875"/>
         </scene>
+        <!--Chore Detail View Controller-->
+        <scene sceneID="W8l-hQ-BHt">
+            <objects>
+                <viewController id="7Pz-Hd-lea" customClass="ChoreDetailViewController" customModule="HomeChoresTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wUm-uY-IFP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rH1-lq-MT8" customClass="RoundedPhotoView" customModule="HomeChoresTracker" customModuleProvider="target">
+                                <rect key="frame" x="87" y="61" width="240" height="240"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d4V-lQ-yA5">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="d4V-lQ-yA5" secondAttribute="trailing" id="1l1-O6-QYe"/>
+                                    <constraint firstItem="d4V-lQ-yA5" firstAttribute="leading" secondItem="rH1-lq-MT8" secondAttribute="leading" id="A96-mQ-ZD9"/>
+                                    <constraint firstAttribute="height" constant="240" id="YgX-zL-xHq"/>
+                                    <constraint firstAttribute="bottom" secondItem="d4V-lQ-yA5" secondAttribute="bottom" id="k2y-OT-tXo"/>
+                                    <constraint firstItem="d4V-lQ-yA5" firstAttribute="top" secondItem="rH1-lq-MT8" secondAttribute="top" id="ndL-ta-KaA"/>
+                                    <constraint firstAttribute="width" secondItem="rH1-lq-MT8" secondAttribute="height" multiplier="1:1" id="yYo-i8-08V"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chore Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkZ-2x-USs">
+                                <rect key="frame" x="139" y="23" width="136" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Notes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hN9-Xy-zxR">
+                                <rect key="frame" x="28" y="346" width="359" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="HRg-tb-gNv"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46n-If-6C9">
+                                <rect key="frame" x="28" y="317" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date: 12/21/2052" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vkm-k7-aLM">
+                                <rect key="frame" x="91.5" y="483" width="231.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.74975920376712324" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hN9-Xy-zxR" firstAttribute="leading" secondItem="m7L-Xw-V5g" secondAttribute="leading" constant="28" id="A8P-Ov-abA"/>
+                            <constraint firstItem="46n-If-6C9" firstAttribute="leading" secondItem="m7L-Xw-V5g" secondAttribute="leading" constant="28" id="Apk-8e-tmD"/>
+                            <constraint firstItem="hN9-Xy-zxR" firstAttribute="top" secondItem="46n-If-6C9" secondAttribute="bottom" constant="8" id="DQi-2g-NIL"/>
+                            <constraint firstItem="Vkm-k7-aLM" firstAttribute="centerX" secondItem="m7L-Xw-V5g" secondAttribute="centerX" id="MIc-uP-fRm"/>
+                            <constraint firstItem="d4V-lQ-yA5" firstAttribute="top" secondItem="tkZ-2x-USs" secondAttribute="bottom" constant="8" id="Nm7-OQ-NMC"/>
+                            <constraint firstItem="Vkm-k7-aLM" firstAttribute="firstBaseline" secondItem="hN9-Xy-zxR" secondAttribute="baseline" constant="32" id="PqF-Z3-bqd"/>
+                            <constraint firstItem="rH1-lq-MT8" firstAttribute="top" secondItem="m7L-Xw-V5g" secondAttribute="top" constant="61" id="QlB-RP-eCL"/>
+                            <constraint firstItem="tkZ-2x-USs" firstAttribute="centerX" secondItem="m7L-Xw-V5g" secondAttribute="centerX" id="UPk-TP-df7"/>
+                            <constraint firstItem="46n-If-6C9" firstAttribute="top" secondItem="d4V-lQ-yA5" secondAttribute="bottom" constant="16" id="iPe-wq-Kc0"/>
+                            <constraint firstItem="rH1-lq-MT8" firstAttribute="centerX" secondItem="m7L-Xw-V5g" secondAttribute="centerX" id="jPD-LT-0T2"/>
+                            <constraint firstItem="m7L-Xw-V5g" firstAttribute="trailing" secondItem="hN9-Xy-zxR" secondAttribute="trailing" constant="27" id="vK7-44-fGp"/>
+                            <constraint firstItem="m7L-Xw-V5g" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="46n-If-6C9" secondAttribute="trailing" constant="8" id="zwT-CV-Qmc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m7L-Xw-V5g"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rCK-lr-vY0"/>
+                    <connections>
+                        <outlet property="choreDueDateLabel" destination="Vkm-k7-aLM" id="Nlu-lf-gxD"/>
+                        <outlet property="choreImageView" destination="d4V-lQ-yA5" id="hZE-2r-Qa0"/>
+                        <outlet property="choreInformationTextView" destination="hN9-Xy-zxR" id="qW9-yD-aMA"/>
+                        <outlet property="choreTitleLabel" destination="tkZ-2x-USs" id="BcF-hv-RNF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VCF-En-mX3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1947.826086956522" y="154.6875"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="DqN-gV-F5p">
             <objects>
@@ -110,6 +203,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.15999373789999999" green="0.70562808570000002" blue="0.63341881970000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.15999373789999999" green="0.70562808570000002" blue="0.63341881970000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="0.70630693440000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

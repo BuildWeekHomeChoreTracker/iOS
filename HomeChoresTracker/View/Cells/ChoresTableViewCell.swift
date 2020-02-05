@@ -24,6 +24,12 @@ class ChoresTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+    var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }()
     
     private func updateViews() {
         guard let chore = chore else { return }
@@ -34,5 +40,6 @@ class ChoresTableViewCell: UITableViewCell {
         }
         choreTitleLabel.text = chore.title
         choreScoreLabel.text = "\(chore.score ?? 0)"
+        dueDateLabel.text = dateFormatter.string(from: chore.dateFromString)
     }
 }

@@ -1,15 +1,15 @@
 //
-//  RoundedView.swift
+//  RoundedPhotoView.swift
 //  HomeChoresTracker
 //
-//  Created by Chad Rutherford on 2/3/20.
+//  Created by Chad Rutherford on 2/5/20.
 //  Copyright © 2020 Lambda School. All rights reserved.
 //
 
 import UIKit
 
 @IBDesignable
-class RoundedView: UIView {
+class RoundedPhotoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,5 +29,7 @@ class RoundedView: UIView {
     func sharedInit() {
         layer.cornerRadius = 15.0
         clipsToBounds = true
+        layer.borderColor = UIColor.darkGray.cgColor
+        layer.borderWidth = 3.0
     }
 }

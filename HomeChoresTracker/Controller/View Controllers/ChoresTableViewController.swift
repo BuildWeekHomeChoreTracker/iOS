@@ -8,12 +8,16 @@
 
 import UIKit
 
-class ChoresTableViewController: UITableViewController {
+class ChoresTableViewController: UITableViewController, SegueHandler {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
     var childController: ChildController?
     let choreFetchQueue = OperationQueue()
+    
+    enum SegueIdentifier: String {
+        case showChoreDetail = "ShowChoreDetailSegue"
+    }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - View Controller Life Cycle
@@ -36,6 +40,19 @@ class ChoresTableViewController: UITableViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true)
+    }
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segueIdentifier(for: segue) {
+        case .showChoreDetail:
+            guard let choreDetailVC = segue.destination as? ChoreDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow,
+                let chore = childController?.chores[indexPath.row] else { return }
+            choreDetailVC.chore = chore
+            choreDetailVC.childController = childController
+        }
     }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
