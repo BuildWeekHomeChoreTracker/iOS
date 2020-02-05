@@ -12,8 +12,13 @@ import Foundation
 Bearer token for logged in user
  */
 struct Bearer: Codable {
-    let message: String
+    let id: String
     let token: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "message"
+        case token
+    }
 }
 
 class NetworkService {

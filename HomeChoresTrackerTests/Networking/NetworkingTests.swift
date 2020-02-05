@@ -25,7 +25,7 @@ class NetworkingTests: XCTestCase {
         
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
-        controller.getChores { error in
+        controller.apiChores { error in
             XCTAssertNil(error)
             XCTAssert(!controller.chores.isEmpty)
             choresExpectation.fulfill()
@@ -48,7 +48,7 @@ class NetworkingTests: XCTestCase {
                 """)
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
-        controller.getChores { error in
+        controller.apiChores { error in
             XCTAssertNil(error)
             XCTAssert(!controller.chores.isEmpty)
             choresExpectation.fulfill()
@@ -73,7 +73,7 @@ class NetworkingTests: XCTestCase {
                 """)
         let choresExpectation = expectation(description: "Waititng for chores to load")
         
-        controller.getChores { error in
+        controller.apiChores { error in
             if let error = error {
                 XCTAssertNotNil(error)
             }
@@ -98,7 +98,7 @@ class NetworkingTests: XCTestCase {
                 """)
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
-        controller.getChores { error in
+        controller.apiChores { error in
             XCTAssertNil(error)
             XCTAssert(controller.chores.isEmpty)
             choresExpectation.fulfill()

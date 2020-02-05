@@ -15,6 +15,7 @@ extension Chore {
     var choreRepresentation: ChoreRepresentation? {
         let rep = ChoreRepresentation(
             bonusPoints: Int(bonusPoints),
+            childId: Int(id),
             cleanStreak: Int(cleanStreak),
             comments: comments,
             dueDate: dateString,
@@ -31,7 +32,7 @@ extension Chore {
     var dateString: String {
         let df = DateFormatter()
         df.dateStyle = .short
-        df.timeStyle = .short
+        df.timeStyle = .none
         let date = df.string(from: self.dueDate ?? Date())
         return date
     }

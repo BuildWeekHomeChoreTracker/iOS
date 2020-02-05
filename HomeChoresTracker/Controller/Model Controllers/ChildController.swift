@@ -13,7 +13,8 @@ class ChildController {
         self.networkLoader = networkLoader
     }
     
-    func login(with username: String, and password: String, complete: @escaping NetworkService.CompletionWithError) {
+//MARK: Auth
+    func login(with username: String, and password: String, complete: @escaping NetworkService.CompletionWithError = {error in}) {
         guard let request = createRequestAndEncodeUser(user: User(username: username, password: password),
                                                        url: loginURL,
                                                        method: .post,
@@ -62,10 +63,11 @@ class ChildController {
         }
     }
     
+    //MARK: Read
     /**
-     Get a child from the API
+     Get a child from the API - currently unused
      */
-    func getChild(complete: @escaping NetworkService.CompletionWithError) {
+    func getChild(complete: @escaping NetworkService.CompletionWithError  = {error in}) {
         guard var request = NetworkService.createRequest(url: choreURL, method: .get, headerType: .contentType, headerValue: .json) else {
             let error = NSError(domain: "ChildController.getChild.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
             complete(error)
@@ -95,13 +97,14 @@ class ChildController {
         }
     }
     
-    func getChores(complete: @escaping NetworkService.CompletionWithError) {
+    func getChores(complete: @escaping NetworkService.CompletionWithError  = {error in}) {
         guard let bearer = bearer else {
             let error = NSError(domain: "ChildController.bearer", code: NetworkService.NetworkError.unauth.rawValue)
             complete(error)
             return
         }
-        let childChoreURL = choreURL?.appendingPathComponent(bearer.message)
+        
+        let childChoreURL = choreURL?.appendingPathComponent(bearer.id)
         guard var request = NetworkService.createRequest(url: childChoreURL, method: .get, headerType: .contentType, headerValue: .json) else {
             let error = NSError(domain: "ChildController.getChores.requestError", code: NetworkService.NetworkError.badRequest.rawValue)
             complete(error)
@@ -184,14 +187,51 @@ class ChildController {
         return postRequest
     }
     
-    // MARK: - MOCK DATA
-    let mockChild = Child(name: "Johnny Appleseed", parentName: "Paul Bunyon")
-    let mockChore = Chore(id: 1,
-                          parentId: 1,
-                          title: "Chop some trees",
-                          bonusPoints: 5,
+    //MARK: Update
+    /**
+     Update chore on the API
+     */
+    func updateAPIChore(_ chore: Chore, complete: @escaping NetworkService.CompletionWithError  = {error in}) {
+        guard let bearer = bearer else {
+            let error = NSError(domain: "ChildController.bearer", code: NetworkService.NetworkError.unauth.rawValue)
+            complete(error)
+            return
+        }
+        
+        let updateChoreURL = choreURL?.appendingPathComponent(String(chore.id))
+        guard var request = NetworkService.createRequest(url: updateChoreURL, method: .put) else {
+            let error = NSError(domain: "ChildController.updateChore: \(String(describing: chore.name)).requestError", code: NetworkService.NetworkError.badRequest.rawValue)
+            complete(error)
+            return
+        }
+        request.addValue(bearer.token, forHTTPHeaderField: NetworkService.HttpHeaderType.authorization.rawValue)
+        
+        URLSession.shared.dataTask(with: request) { (_, _, error) in
+            if let error = error {
+                complete(error)
+                return
+            }
+            complete(nil)
+        }.resume()
+        
+    }
+    
+    func updateMOCChore(_ chore: Chore, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        //save changes on disk
+    }
+    
+    func updateChore(_ chore: Chore, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        updateAPIChore(chore)
+        updateMOCChore(chore, context: context)
+    }
+    
+    //MARK: MOCK DATA
+    let mockChild = Child(id: 9001, name: "Johnny Appleseed", parentName: "Paul Bunyon")
+    let mockChore = Chore(bonusPoints: 5,
                           cleanStreak: 7,
                           dueDate: Date(timeIntervalSinceNow: 900),
-                          information: "Chop them well",
-                          score: 9000)
+                          id: 1, information: "Chop them well",
+                          parentId: 1, score: 9000,
+                          title: "Chop some trees")
+
 }

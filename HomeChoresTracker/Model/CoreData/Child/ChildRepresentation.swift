@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 struct ChildRepresentation: Codable {
+    let id: Int
     let name: String
     let parentName: String
-    var cleanStreak: Int?
-    var chores: [ChoreRepresentation]?
+    var cleanStreak: Int?    
 }
