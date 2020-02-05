@@ -19,7 +19,7 @@ extension Child {
         var choreReps = [ChoreRepresentation]()
         for chore in chores {
             if let chore = chore as? Chore {
-                choreReps.append(ChoreRepresentation(bonusPoints: Int(chore.bonusPoints ?? 0), cleanStreak: Int(chore.cleanStreak ?? 0), comments: chore.comments, dueDate: chore.dueDate ?? Date(), id: Int(chore.id), image: chore.image, information: chore.information ?? "No Description Given", parentId: Int(chore.parentId), score: Int(chore.score), title: chore.title ?? "No Title"))
+                choreReps.append(ChoreRepresentation(bonusPoints: Int(chore.bonusPoints ?? 0), cleanStreak: Int(chore.cleanStreak ?? 0), comments: chore.comments, dueDate: chore.dateString, id: Int(chore.id), image: chore.image, information: chore.information ?? "No Description Given", parentId: Int(chore.parentId), score: Int(chore.score), title: chore.title ?? "No Title"))
             }
         }
         return ChildRepresentation(name: name, parentName: parentName, chores: choreReps)

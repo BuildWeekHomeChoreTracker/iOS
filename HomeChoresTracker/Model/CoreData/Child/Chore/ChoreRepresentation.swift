@@ -12,7 +12,7 @@ struct ChoreRepresentation: Codable {
     var bonusPoints: Int?
     var cleanStreak: Int?
     var comments: String?
-    var dueDate: Date?
+    var dueDate: String?
     var id: Int
     var image: Data?
     var information: String?
@@ -20,12 +20,8 @@ struct ChoreRepresentation: Codable {
     var score: Int?
     var title: String
     
-    
-    
-    
-    
-    
-    enum ChoreKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
         case image = "photo_obj"
         case score = "chore_score"
         case title = "name"
@@ -35,7 +31,7 @@ struct ChoreRepresentation: Codable {
         case parentId = "parent_id"
     }
     
-    init(bonusPoints: Int?, cleanStreak: Int?, comments: String?, dueDate: Date, id: Int, image: Data?, information: String, parentId: Int, score: Int?, title: String) {
+    init(bonusPoints: Int?, cleanStreak: Int?, comments: String?, dueDate: String, id: Int, image: Data?, information: String, parentId: Int, score: Int?, title: String) {
         
         self.comments = comments
         self.dueDate = dueDate
@@ -49,17 +45,12 @@ struct ChoreRepresentation: Codable {
         self.cleanStreak = cleanStreak
     }
     
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: ChoreKeys.self)
-//        image = try container.decode(Data?.self, forKey: .image)
-//        score = try container.decode(Int?.self, forKey: .score)
-//        title = try container.decode(String.self, forKey: .title)
-//    }
-//
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: ChoreKeys.self)
-//        try container.encode(image, forKey: .image)
-//        try container.encode(score, forKey: .score)
-//        try container.encode(title, forKey: .title)
-//    }
+    var dateFromString: Date {
+        let df = DateFormatter()
+        df.dateStyle = .short
+        df.timeStyle = .short
+        guard let date = df.date(from: self.dueDate ?? "12-12-1970") else {return Date()}
+        return date
+    }
+    
 }
