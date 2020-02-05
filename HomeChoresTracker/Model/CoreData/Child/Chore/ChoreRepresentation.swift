@@ -18,6 +18,7 @@ struct AllChores: Decodable {
 
 struct ChoreRepresentation: Codable {
     var bonusPoints: Int?
+    var childId: Int
     var cleanStreak: Int?
     var comments: String?
     var dueDate: String?
@@ -28,19 +29,25 @@ struct ChoreRepresentation: Codable {
     var score: Int?
     var title: String
     
+    
     enum CodingKeys: String, CodingKey {
-        case id = "child_id"
+        case bonusPoints = "bonus_pts"
+        case childId = "child_id"
+        case cleanStreak
+        case comments
+        case dueDate = "due_date"
+        case id
         case image = "photo_obj"
+        case information = "description"
+        case parentId = "parent_id"
         case score = "chore_score"
         case title = "name"
-        case information = "description"
-        case bonusPoints = "bonus_pts"
-        case dueDate = "due_date"
-        case parentId = "parent_id"
+        
     }
     
-    init(bonusPoints: Int?, cleanStreak: Int?, comments: String?, dueDate: String, id: Int, image: Data?, information: String, parentId: Int, score: Int?, title: String) {
-        
+    init(bonusPoints: Int?, childId: Int, cleanStreak: Int?, comments: String?, dueDate: String, id: Int, image: Data?, information: String, parentId: Int, score: Int?, title: String) {
+        self.bonusPoints = bonusPoints
+        self.cleanStreak = cleanStreak
         self.comments = comments
         self.dueDate = dueDate
         self.id = id
@@ -49,16 +56,15 @@ struct ChoreRepresentation: Codable {
         self.parentId = parentId
         self.score = score
         self.title = title
-        self.bonusPoints = bonusPoints
-        self.cleanStreak = cleanStreak
+        self.childId = childId
     }
     
     var dateFromString: Date {
         let df = DateFormatter()
         df.dateStyle = .short
-        df.timeStyle = .short
-        guard let date = df.date(from: self.dueDate ?? "12-12-1970") else { return Date() }
+        #warning("This may have to change depending on how the front end guys format their date. It's just a string on the API side")
+        df.timeStyle = .none
+        guard let date = df.date(from: self.dueDate ?? "12-12-1970") else {return Date()}
         return date
     }
-    
 }
