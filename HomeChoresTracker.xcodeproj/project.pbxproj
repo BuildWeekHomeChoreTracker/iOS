@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630D57F323EB80E800C1079A /* ChildRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D57F123EB80E800C1079A /* ChildRepresentation.swift */; };
+		630D57F423EB80E800C1079A /* Child+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D57F223EB80E800C1079A /* Child+convenience.swift */; };
 		63371F2223E9E1790072C8AB /* HomeChoreTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63371F2123E9E1790072C8AB /* HomeChoreTrackerUITests.swift */; };
 		634654AF23EA0A6C002E792B /* ChildTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634654AE23EA0A6C002E792B /* ChildTests.swift */; };
 		634654B123EA0BFF002E792B /* ChoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634654B023EA0BFF002E792B /* ChoreTests.swift */; };
@@ -37,8 +39,6 @@
 		B90B32CA23E893D8003899D8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32C923E893D8003899D8 /* NetworkService.swift */; };
 		B90B32CE23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B90B32CC23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld */; };
 		B90B32D023E89455003899D8 /* ChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32CF23E89455003899D8 /* ChildController.swift */; };
-		B90B32FB23E8D18F003899D8 /* ChildRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32F923E8D18F003899D8 /* ChildRepresentation.swift */; };
-		B90B32FC23E8D18F003899D8 /* Child+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32FA23E8D18F003899D8 /* Child+convenience.swift */; };
 		B90B32FF23E8D19A003899D8 /* Chore+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32FD23E8D19A003899D8 /* Chore+convenience.swift */; };
 		B90B330023E8D19A003899D8 /* ChoreRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B32FE23E8D19A003899D8 /* ChoreRepresentation.swift */; };
 		B90B330223E8D1B6003899D8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B330123E8D1B6003899D8 /* CoreDataStack.swift */; };
@@ -63,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		630D57F123EB80E800C1079A /* ChildRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildRepresentation.swift; sourceTree = "<group>"; };
+		630D57F223EB80E800C1079A /* Child+convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Child+convenience.swift"; sourceTree = "<group>"; };
 		63371F2123E9E1790072C8AB /* HomeChoreTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChoreTrackerUITests.swift; sourceTree = "<group>"; };
 		634654AE23EA0A6C002E792B /* ChildTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildTests.swift; sourceTree = "<group>"; };
 		634654B023EA0BFF002E792B /* ChoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTests.swift; sourceTree = "<group>"; };
@@ -99,8 +101,6 @@
 		B90B32C923E893D8003899D8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B90B32CD23E893F3003899D8 /* HomeChoresTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeChoresTracker.xcdatamodel; sourceTree = "<group>"; };
 		B90B32CF23E89455003899D8 /* ChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildController.swift; sourceTree = "<group>"; };
-		B90B32F923E8D18F003899D8 /* ChildRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildRepresentation.swift; sourceTree = "<group>"; };
-		B90B32FA23E8D18F003899D8 /* Child+convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Child+convenience.swift"; sourceTree = "<group>"; };
 		B90B32FD23E8D19A003899D8 /* Chore+convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chore+convenience.swift"; sourceTree = "<group>"; };
 		B90B32FE23E8D19A003899D8 /* ChoreRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoreRepresentation.swift; sourceTree = "<group>"; };
 		B90B330123E8D1B6003899D8 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -132,6 +132,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		630D57F023EB80E800C1079A /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				630D57F223EB80E800C1079A /* Child+convenience.swift */,
+				630D57F123EB80E800C1079A /* ChildRepresentation.swift */,
+				B90B32D223E898F2003899D8 /* Chore */,
+			);
+			path = Child;
+			sourceTree = "<group>";
+		};
 		634654AA23EA0A38002E792B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,7 +358,7 @@
 			children = (
 				B90B330123E8D1B6003899D8 /* CoreDataStack.swift */,
 				B90B32CC23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld */,
-				B90B32D123E898E7003899D8 /* Child */,
+				630D57F023EB80E800C1079A /* Child */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -359,16 +369,6 @@
 				B90B32C923E893D8003899D8 /* NetworkService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		B90B32D123E898E7003899D8 /* Child */ = {
-			isa = PBXGroup;
-			children = (
-				B90B32FA23E8D18F003899D8 /* Child+convenience.swift */,
-				B90B32F923E8D18F003899D8 /* ChildRepresentation.swift */,
-				B90B32D223E898F2003899D8 /* Chore */,
-			);
-			path = Child;
 			sourceTree = "<group>";
 		};
 		B90B32D223E898F2003899D8 /* Chore */ = {
@@ -572,11 +572,11 @@
 				634D42DA23EA1F6C00A6D53E /* ConcurrentOperation.swift in Sources */,
 				63FEDF7D23E9EE2700BCA319 /* URLSession+NetworkDataLoader.swift in Sources */,
 				B90B330423E9156F003899D8 /* User.swift in Sources */,
+				630D57F423EB80E800C1079A /* Child+convenience.swift in Sources */,
 				B90B330223E8D1B6003899D8 /* CoreDataStack.swift in Sources */,
-				B90B32FB23E8D18F003899D8 /* ChildRepresentation.swift in Sources */,
 				B90B32CE23E893F3003899D8 /* HomeChoresTracker.xcdatamodeld in Sources */,
-				B90B32FC23E8D18F003899D8 /* Child+convenience.swift in Sources */,
 				637703F923E9B79A0076C177 /* ChoresTableViewCell.swift in Sources */,
+				630D57F323EB80E800C1079A /* ChildRepresentation.swift in Sources */,
 				639366B523E8AA0300683D1F /* RoundedButton.swift in Sources */,
 				634C32A723EB362E00BAEBEA /* ChoreDetailViewController.swift in Sources */,
 				B90B32D023E89455003899D8 /* ChildController.swift in Sources */,

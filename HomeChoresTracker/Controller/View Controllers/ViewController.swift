@@ -18,7 +18,6 @@ class ViewController: UIViewController, SegueHandler {
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
     let childController = ChildController()
-    var child: Child?
     
     enum SegueIdentifier: String {
         case showChoreSegue = "ShowChoreSegue"

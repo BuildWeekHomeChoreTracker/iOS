@@ -78,6 +78,16 @@ class ChoreDetailViewController: UIViewController {
             break
         }
     }
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Actions
+    @IBAction func doneButtonTapped(_ sender: UIButton) {
+        let imageData = choreImageView.image?.jpegData(compressionQuality: 0.7)
+        chore?.image = imageData
+        guard let chore = chore, let newChore = Chore(representation: chore) else { return }
+        print(newChore)
+//        childController?.completeChore(newChore)
+    }
 }
 
 extension ChoreDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

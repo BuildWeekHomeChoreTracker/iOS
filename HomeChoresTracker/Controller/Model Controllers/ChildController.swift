@@ -191,7 +191,7 @@ class ChildController {
     /**
      Update chore on the API
      */
-    func updateAPIChore(_ chore: Chore, complete: @escaping NetworkService.CompletionWithError  = { error in }) {
+    func updateAPIChore(_ chore: ChoreRepresentation, complete: @escaping NetworkService.CompletionWithError  = { error in }) {
         guard let bearer = bearer else {
             let error = NSError(domain: "ChildController.bearer", code: NetworkService.NetworkError.unauth.rawValue)
             complete(error)
@@ -200,20 +200,25 @@ class ChildController {
         
         let updateChoreURL = choreURL?.appendingPathComponent(String(chore.id))
         guard var request = NetworkService.createRequest(url: updateChoreURL, method: .put) else {
-            let error = NSError(domain: "ChildController.updateChore: \(String(describing: chore.name)).requestError", code: NetworkService.NetworkError.badRequest.rawValue)
+            let error = NSError(domain: "ChildController.updateChore: \(String(describing: chore.title)).requestError", code: NetworkService.NetworkError.badRequest.rawValue)
             complete(error)
             return
         }
         request.addValue(bearer.token, forHTTPHeaderField: NetworkService.HttpHeaderType.authorization.rawValue)
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
+        let encodingStatus = NetworkService.encode(from: chore, request: request)
+        if let error = encodingStatus.error {
+            complete(error)
+            return
+        }
+        
+        networkLoader.loadData(using: request) { _, _, error in
             if let error = error {
                 complete(error)
                 return
             }
             complete(nil)
-        }.resume()
-        
+        }
     }
     
     func completeChore(_ chore: Chore) {
@@ -230,7 +235,9 @@ class ChildController {
     }
     
     private func updateChore(_ chore: Chore, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        updateAPIChore(chore)
+        if let rep = chore.choreRepresentation {
+            updateAPIChore(rep)
+        }
         updateMOCChore(context)
     }
     

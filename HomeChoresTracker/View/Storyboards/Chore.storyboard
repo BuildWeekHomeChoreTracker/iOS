@@ -164,11 +164,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oER-h0-hIu" customClass="RoundedButton" customModule="HomeChoresTracker" customModuleProvider="target">
+                                <rect key="frame" x="132" y="704" width="150" height="40"/>
+                                <color key="backgroundColor" red="0.15999373789999999" green="0.70562808570000002" blue="0.63341881970000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4Qp-i4-EcP"/>
+                                    <constraint firstAttribute="width" constant="150" id="mXk-HO-FCv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="All Done!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="7Pz-Hd-lea" eventType="touchUpInside" id="GHx-ya-jZK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.74975920376712324" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="m7L-Xw-V5g" firstAttribute="bottom" secondItem="oER-h0-hIu" secondAttribute="bottom" constant="30" id="51f-AY-9Hf"/>
                             <constraint firstItem="hN9-Xy-zxR" firstAttribute="leading" secondItem="m7L-Xw-V5g" secondAttribute="leading" constant="28" id="A8P-Ov-abA"/>
                             <constraint firstItem="46n-If-6C9" firstAttribute="leading" secondItem="m7L-Xw-V5g" secondAttribute="leading" constant="28" id="Apk-8e-tmD"/>
+                            <constraint firstItem="oER-h0-hIu" firstAttribute="centerX" secondItem="m7L-Xw-V5g" secondAttribute="centerX" id="BkM-Ur-mMF"/>
                             <constraint firstItem="hN9-Xy-zxR" firstAttribute="top" secondItem="46n-If-6C9" secondAttribute="bottom" constant="8" id="DQi-2g-NIL"/>
                             <constraint firstItem="Vkm-k7-aLM" firstAttribute="centerX" secondItem="m7L-Xw-V5g" secondAttribute="centerX" id="MIc-uP-fRm"/>
                             <constraint firstItem="d4V-lQ-yA5" firstAttribute="top" secondItem="tkZ-2x-USs" secondAttribute="bottom" constant="8" id="Nm7-OQ-NMC"/>
