@@ -1,10 +1,12 @@
 import Foundation
 import CoreData
+import FirebaseStorage
 
 class ChildController {
     private let loginURL = URL(string: "https://chore-tracker1.herokuapp.com/api/auth/login/child")
     private let choreURL = URL(string: "https://chore-tracker1.herokuapp.com/api/auth/child")
     private let updateURL = URL(string: "https://chore-tracker1.herokuapp.com/api/chore")
+    let storageRef = Storage.storage().reference()
     var bearer: Bearer?
     var chores = [ChoreRepresentation]()
     let networkLoader: NetworkDataLoader
@@ -121,6 +123,36 @@ class ChildController {
         }
     }
     
+    func fetchImage(for chore: ChoreRepresentation, completion: @escaping (UIImage?) -> Void) {
+        guard let image = chore.image, let url = URL(string: image) else { return }
+        networkLoader.loadData(using: url) { data, response, error in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
+            
+            if let response = response, response.statusCode != 200 {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(UIImage(data: data))
+            }
+        }
+    }
+    
     // MARK: - Helper Methods
     /**
      Unwraps createRequest() and encodeUser()
@@ -172,6 +204,7 @@ class ChildController {
             complete(error)
             return
         }
+
         guard let encodeRequest = encodingStatus.request else { return }
         networkLoader.loadData(using: encodeRequest) { _, response, error in
             if let error = error {
@@ -180,7 +213,6 @@ class ChildController {
             }
             
             if let response = response {
-                print(response)
                 print(response.statusCode)
             }
             
@@ -188,8 +220,32 @@ class ChildController {
         }
     }
     
-    func completeChore(_ chore: Chore, completion: @escaping () -> Void) {
+    func uploadImage(for chore: ChoreRepresentation, image: Data, completion: @escaping (URL?) -> Void) {
+        storageRef.child("choreImages/\(chore.title)\(chore.id).jpg") .putData(image, metadata: nil) { _, error in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
+            
+            self.storageRef.child("choreImages/\(chore.title)\(chore.id).jpg").downloadURL { url, error in
+                guard error == nil else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                    return
+                }
+                DispatchQueue.main.async {
+                    completion(url)
+                }
+            }
+        }
+    }
+    
+    func completeChore(_ chore: Chore, with url: URL, completion: @escaping () -> Void) {
         chore.completed = 1
+        chore.image = url.absoluteString
         updateChore(chore)
         completion()
     }
