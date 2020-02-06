@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Home Chores Tracker needs access to your camera to save photos of chores for you to display.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Home Chores Tracker needs access to your photo library to save photos of chores for you to display.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -62,9 +66,5 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Home Chores Tracker needs access to your photo library to save photos of chores for you to display.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Home Chores Tracker needs access to your camera to save photos of chores for you to display.</string>
 </dict>
 </plist>

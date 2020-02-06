@@ -158,12 +158,15 @@ class ChildController {
         }
         
         let updateChoreURL = updateURL?.appendingPathComponent(String(chore.id))
-        guard var request = NetworkService.createRequest(url: updateChoreURL, method: .put) else {
+        guard var request = NetworkService.createRequest(url: updateChoreURL,
+                                                         method: .put,
+                                                         headerType: NetworkService.HttpHeaderType.contentType,
+                                                         headerValue: NetworkService.HttpHeaderValue.json) else {
             let error = NSError(domain: "ChildController.updateChore: \(String(describing: chore.title)).requestError", code: NetworkService.NetworkError.badRequest.rawValue)
             complete(error)
             return
         }
-        request.addValue(bearer.token, forHTTPHeaderField: NetworkService.HttpHeaderType.authorization.rawValue)
+        request.setValue(bearer.token, forHTTPHeaderField: NetworkService.HttpHeaderType.authorization.rawValue)
         
         let encodingStatus = NetworkService.encode(from: chore, request: request)
         if let error = encodingStatus.error {
@@ -171,19 +174,20 @@ class ChildController {
             return
         }
         
-        guard let encodeRequest = encodingStatus.request else { return }
-        networkLoader.loadData(using: encodeRequest) { _, response, error in
-            if let error = error {
-                complete(error)
-                return
-            }
-            
-            if let response = response {
-                print(response.statusCode)
-            }
-            
-            complete(nil)
-        }
+        guard let encodeRequest = encodingStatus.request, let body = encodeRequest.httpBody else { return }
+        print(body)
+//        networkLoader.loadData(using: encodeRequest) { _, response, error in
+//            if let error = error {
+//                complete(error)
+//                return
+//            }
+//            
+//            if let response = response {
+//                print(response.statusCode)
+//            }
+//            
+//            complete(nil)
+//        }
     }
     
     func completeChore(_ chore: Chore, completion: @escaping () -> Void) {
