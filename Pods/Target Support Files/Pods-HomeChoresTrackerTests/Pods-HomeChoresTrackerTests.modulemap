@@ -1,0 +1,6 @@
+framework module Pods_HomeChoresTrackerTests {
+  umbrella header "Pods-HomeChoresTrackerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
