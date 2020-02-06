@@ -13,8 +13,10 @@ class ChoreTests: XCTestCase {
     
     func testChoreCreation() {
         let choreRep = ChoreRepresentation(bonusPoints: 5,
+                                           childId: 7,
                                            cleanStreak: 5,
                                            comments: "",
+                                           completed: 1,
                                            dueDate: "",
                                            id: 1,
                                            image: nil,

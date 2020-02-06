@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ChoresTableViewController: UITableViewController, SegueHandler {
     
@@ -14,6 +15,35 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
     // MARK: - Properties
     var childController: ChildController?
     let choreFetchQueue = OperationQueue()
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Chore> = {
+        let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "completed", ascending: true),
+            NSSortDescriptor(key: "dueDate", ascending: false)
+        ]
+        let context = CoreDataStack.shared.mainContext
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "completed", cacheName: nil)
+        frc.delegate = self
+        do {
+            try frc.performFetch()
+        } catch {
+            guard let childController = childController,
+                let mockChore = Chore(id: 1,
+                                      childId: 6,
+                                      parentId: 1,
+                                      title: "Chop some trees",
+                                      bonusPoints: 5,
+                                      cleanStreak: 7,
+                                      dueDate: Date(timeIntervalSinceNow: 900),
+                                      information: "Chop them well",
+                                      score: 9000),
+                let rep = mockChore.choreRepresentation
+            else { return frc }
+            childController.chores = [rep]
+        }
+        return frc
+    }()
     
     enum SegueIdentifier: String {
         case showChoreDetail = "ShowChoreDetailSegue"
@@ -48,9 +78,9 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
         switch segueIdentifier(for: segue) {
         case .showChoreDetail:
             guard let choreDetailVC = segue.destination as? ChoreDetailViewController,
-                let indexPath = tableView.indexPathForSelectedRow,
-                let chore = childController?.chores[indexPath.row] else { return }
-            choreDetailVC.chore = chore
+                let indexPath = tableView.indexPathForSelectedRow
+            else { return }
+            choreDetailVC.chore = fetchedResultsController.object(at: indexPath).choreRepresentation
             choreDetailVC.childController = childController
         }
     }
@@ -58,18 +88,34 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - TableView DataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        fetchedResultsController.sections?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        childController?.chores.count ?? 0
+        let chores = fetchedResultsController.sections?[section].numberOfObjects ?? 0
+        return chores
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: .choreCell, for: indexPath) as? ChoresTableViewCell else { return UITableViewCell() }
-        let chore = childController?.chores[indexPath.row]
+        let chore = fetchedResultsController.object(at: indexPath).choreRepresentation
         cell.chore = chore
         cell.childController = childController
         return cell
     }
+    
+    // MARK: - TableView Delegate Methods
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sectionData = fetchedResultsController.sections?[section] else { return nil }
+        //0 false, 1 true
+        if sectionData.name == "0" {
+            return "Chores I need to do"
+        } else {
+            return "Chores I've done"
+        }
+    }
+}
+
+extension ChoresTableViewController: NSFetchedResultsControllerDelegate {
+    
 }

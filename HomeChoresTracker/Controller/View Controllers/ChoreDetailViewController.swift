@@ -84,14 +84,21 @@ class ChoreDetailViewController: UIViewController {
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Actions
     @IBAction func doneButtonTapped(_ sender: UIButton) {
-        guard let chore = chore,
-            let imageData = choreImageView.image?.jpegData(compressionQuality: 0.7) else { return }
-        childController?.uploadImage(for: chore, image: imageData) { url in
-            if let url = url {
-                if let newChore = Chore(representation: chore) {
-                    self.childController?.completeChore(newChore, with: url) {
-                        self.navigationController?.popViewController(animated: true)
+        guard let chore = chore else { return }
+        if let imageData = choreImageView.image?.jpegData(compressionQuality: 0.7) {
+            childController?.uploadImage(for: chore, image: imageData) { url in
+                if let url = url {
+                    if let newChore = Chore(representation: chore) {
+                        self.childController?.completeChore(newChore, with: url) {
+                            self.navigationController?.popViewController(animated: true)
+                        }
                     }
+                }
+            }
+        } else {
+            if let newChore = Chore(representation: chore) {
+                self.childController?.completeChore(newChore) {
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }
