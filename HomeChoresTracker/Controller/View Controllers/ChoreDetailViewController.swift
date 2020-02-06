@@ -82,11 +82,12 @@ class ChoreDetailViewController: UIViewController {
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Actions
     @IBAction func doneButtonTapped(_ sender: UIButton) {
-        let imageData = choreImageView.image?.jpegData(compressionQuality: 0.7)
+        let imageData = choreImageView.image?.pngData()
         chore?.image = imageData
         guard let chore = chore, let newChore = Chore(representation: chore) else { return }
-        print(newChore)
-//        childController?.completeChore(newChore)
+        childController?.completeChore(newChore) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 

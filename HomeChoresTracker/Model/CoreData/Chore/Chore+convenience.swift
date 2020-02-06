@@ -15,7 +15,7 @@ extension Chore {
     var choreRepresentation: ChoreRepresentation? {
         let rep = ChoreRepresentation(
             bonusPoints: Int(bonusPoints),
-            childId: Int(id),
+            childId: Int(childId),
             cleanStreak: Int(cleanStreak),
             comments: comments,
             completed: Int(completed),
@@ -40,6 +40,7 @@ extension Chore {
     
     // MARK: - Init
     convenience init?(id: Int16,
+                      childId: Int16,
                       parentId: Int16,
                       title: String,
                       bonusPoints: Int16? = nil,
@@ -53,6 +54,8 @@ extension Chore {
                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)
+        self.id = id
+        self.childId = childId
         self.parentId = parentId
         self.title = title
         self.bonusPoints = bonusPoints ?? 0
@@ -70,6 +73,7 @@ extension Chore {
     // MARK: - Rep Convenience Init
     convenience init?(representation: ChoreRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(id: Int16(representation.id),
+                  childId: Int16(representation.childId),
                   parentId: Int16(representation.parentId),
                   title: representation.title,
                   bonusPoints: Int16(representation.bonusPoints ?? 0),

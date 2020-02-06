@@ -107,8 +107,6 @@ class NetworkService {
             switch type {
             case is User:
                 localRequest.httpBody = try jsonEncoder.encode(type as? User)
-            case is ChildRepresentation:
-                localRequest.httpBody = try jsonEncoder.encode(type as? ChildRepresentation)
             case is ChoreRepresentation:
                 localRequest.httpBody = try jsonEncoder.encode(type as? ChoreRepresentation)
             default: fatalError("\(String(describing: type)) is not defined locally in encode function")
@@ -133,9 +131,6 @@ class NetworkService {
         
         do {
             switch type {
-            case is ChildRepresentation.Type:
-                let child = try decoder.decode(ChildRepresentation.self, from: data)
-                return child
             case is Bearer.Type:
                 let bearer = try decoder.decode(Bearer.self, from: data)
                 return bearer
