@@ -45,10 +45,15 @@ class ChoreDetailViewController: UIViewController {
     private func updateViews() {
         guard let chore = chore, self.isViewLoaded else { return }
         choreTitleLabel.text = chore.title
+        if chore.completed == 1 {
+            
+        } else {
+            
+        }
         if let imageData = chore.image {
-            let dataDecoded: NSData = NSData(base64Encoded: imageData, options: NSData.Base64DecodingOptions(rawValue: 0))!
-            let decodedimage: UIImage = UIImage(data: dataDecoded as Data)!
-            choreImageView.image = decodedimage
+//            let dataDecoded: NSData = NSData(base64Encoded: imageData, options: NSData.Base64DecodingOptions(rawValue: 0))!
+//            let decodedimage: UIImage = UIImage(data: dataDecoded as Data)!
+//            choreImageView.image = decodedimage
         }
         choreInformationTextView.text = chore.information
         choreDueDateLabel.text = "Due Date: \(dateFormatter.string(from: chore.dateFromString))"
