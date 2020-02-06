@@ -144,10 +144,10 @@ class ChildController {
                         apiChoreDict.removeValue(forKey: rep.id)
                     }
                     //update the API chores
-                    self.updateMOCChores(representations: choreReps)
+                    self.updateMOCChores(representations: choreReps, context: context)
                     //Create Managed Objects out of the rest of chores
                     for (_, chore) in apiChoreDict {
-                        Chore(representation: chore, context: context)
+                        self.createMOCChore(representation: chore, context: context)
                     }
                     try? context.save()
                     
@@ -220,7 +220,7 @@ class ChildController {
     
     
     // MARK: - Update
-    func updateMOCChores(representations: [ChoreRepresentation]) {
+    func updateMOCChores(representations: [ChoreRepresentation], context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         func updateEntries(with representations: [ChoreRepresentation]) {
             let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
             let identifiers = representations.map { $0.id }
@@ -233,7 +233,7 @@ class ChildController {
                     let chores = try context.fetch(fetchRequest)
                     for chore in chores {
                         guard let representation = repDict[Int(chore.id)] else { continue }
-                        self.updateChore(chore: chore, choreRep: representation)
+                        self.updateChore(chore: chore, choreRep: representation, context: context)
                         repDict.removeValue(forKey: Int(chore.id))
                     }
                     for rep in repDict.values {
@@ -247,7 +247,7 @@ class ChildController {
         }
     }
     
-    func updateChore(chore: Chore, choreRep: ChoreRepresentation) {
+    func updateChore(chore: Chore, choreRep: ChoreRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         chore.completed = Int16(choreRep.completed)
         chore.image = choreRep.image
         chore.comments = choreRep.comments
