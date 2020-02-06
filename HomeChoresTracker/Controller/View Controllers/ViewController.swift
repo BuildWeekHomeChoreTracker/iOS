@@ -60,6 +60,7 @@ class ViewController: UIViewController, SegueHandler {
             if let error = error {
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }
+            UserDefaults.set
             self.performSegue(withIdentifier: .showChoreSegue)
         }
     }
