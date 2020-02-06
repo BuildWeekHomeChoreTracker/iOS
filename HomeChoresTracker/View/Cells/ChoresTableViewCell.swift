@@ -20,6 +20,11 @@ class ChoresTableViewCell: UITableViewCell {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
+    var childController: ChildController? {
+        didSet {
+            updateViews()
+        }
+    }
     var chore: ChoreRepresentation? {
         didSet {
             updateViews()
@@ -38,13 +43,10 @@ class ChoresTableViewCell: UITableViewCell {
             doneButton.setImage(UIImage(systemName: "rectangle.badge.checkmark"), for: .normal)
         } else {
             doneButton.setImage(UIImage(systemName: "checkmark.rectangle"), for: .normal)
-        }
-        if let imageData = chore.image {
-//            let dataDecoded: NSData = NSData(base64Encoded: imageData, options: NSData.Base64DecodingOptions(rawValue: 0))!
-//            let decodedimage: UIImage = UIImage(data: dataDecoded as Data)!
-//            choreImageView.image = decodedimage
-        } else {
-            choreImageView.image = UIImage(named: "chore_bg")
+        }        
+        guard let chore = chore, let childController = childController else { return }
+        childController.fetchImage(for: chore) { image in
+            self.choreImageView.image = image ?? UIImage(named: "chore_bg")
         }
         choreTitleLabel.text = chore.title
         choreScoreLabel.text = "\(chore.score ?? 0)"

@@ -109,8 +109,6 @@ class NetworkService {
                 localRequest.httpBody = try jsonEncoder.encode(type as? User)
             case is ChoreRepresentation:
                 localRequest.httpBody = try jsonEncoder.encode(type as? ChoreRepresentation)
-                print(String(data: localRequest.httpBody!, encoding: String.Encoding.utf8))
-                
             default: fatalError("\(String(describing: type)) is not defined locally in encode function")
             }
         } catch {

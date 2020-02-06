@@ -69,6 +69,7 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: .choreCell, for: indexPath) as? ChoresTableViewCell else { return UITableViewCell() }
         let chore = childController?.chores[indexPath.row]
         cell.chore = chore
+        cell.childController = childController
         return cell
     }
 }
