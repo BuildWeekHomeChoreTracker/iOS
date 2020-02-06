@@ -14,13 +14,13 @@ extension UserDefaults {
     }
 
     /// Stores the last logged in user
-    var lastLoggedInUser: Bool {
+    var lastLoggedInUser: String {
         set {
             set(newValue, forKey: Keys.lastLoggedInUser)
         }
         get {
-            let boolKey = bool(forKey: Keys.lastLoggedInUser)
-            return boolKey
+            let boolKey = string(forKey: Keys.lastLoggedInUser)
+            return boolKey ?? ""
         }
     }
 }

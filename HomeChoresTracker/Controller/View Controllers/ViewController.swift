@@ -18,6 +18,7 @@ class ViewController: UIViewController, SegueHandler {
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
     let childController = ChildController()
+    let userDefaults = UserDefaults.standard
     
     enum SegueIdentifier: String {
         case showChoreSegue = "ShowChoreSegue"
@@ -29,6 +30,7 @@ class ViewController: UIViewController, SegueHandler {
         super.viewDidLoad()
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        usernameTextField.text = userDefaults.lastLoggedInUser
     }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
@@ -60,7 +62,7 @@ class ViewController: UIViewController, SegueHandler {
             if let error = error {
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }
-            UserDefaults.set
+            self.userDefaults.lastLoggedInUser = username
             self.performSegue(withIdentifier: .showChoreSegue)
         }
     }
