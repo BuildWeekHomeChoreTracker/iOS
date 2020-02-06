@@ -11,6 +11,12 @@ import XCTest
 
 class NetworkingTests: XCTestCase {
     
+    func testUserDefaultsKey() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.lastLoggedInUser = "Bill"
+        XCTAssertEqual(userDefaults.lastLoggedInUser, "Bill")
+    }
+    
     func testFetchChores() {
         let controller = ChildController()
         let loginExpectation = expectation(description: "Waiting to login")
