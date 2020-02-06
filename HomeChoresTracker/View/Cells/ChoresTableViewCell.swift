@@ -16,6 +16,7 @@ class ChoresTableViewCell: UITableViewCell {
     @IBOutlet private weak var choreTitleLabel: UILabel!
     @IBOutlet private weak var dueDateLabel: UILabel!
     @IBOutlet private weak var choreScoreLabel: UILabel!
+    @IBOutlet private weak var doneButton: UIButton!
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
@@ -37,6 +38,12 @@ class ChoresTableViewCell: UITableViewCell {
     }()
     
     private func updateViews() {
+        guard let chore = chore else { return }
+        if chore.completed == 0 {
+            doneButton.setImage(UIImage(systemName: "rectangle.badge.checkmark"), for: .normal)
+        } else {
+            doneButton.setImage(UIImage(systemName: "checkmark.rectangle"), for: .normal)
+        }        
         guard let chore = chore, let childController = childController else { return }
         childController.fetchImage(for: chore) { image in
             self.choreImageView.image = image ?? UIImage(named: "chore_bg")

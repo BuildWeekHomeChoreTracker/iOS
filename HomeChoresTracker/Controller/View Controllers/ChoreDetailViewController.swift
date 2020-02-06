@@ -45,7 +45,6 @@ class ChoreDetailViewController: UIViewController {
     private func updateViews() {
         guard let chore = chore, self.isViewLoaded else { return }
         choreTitleLabel.text = chore.title
-        
         childController?.fetchImage(for: chore) { image in
             if let image = image {
                 self.choreImageView.image = image
