@@ -46,7 +46,9 @@ class ChoreDetailViewController: UIViewController {
         guard let chore = chore, self.isViewLoaded else { return }
         choreTitleLabel.text = chore.title
         if let imageData = chore.image {
-            choreImageView.image = UIImage(data: imageData)
+            let dataDecoded: NSData = NSData(base64Encoded: imageData, options: NSData.Base64DecodingOptions(rawValue: 0))!
+            let decodedimage: UIImage = UIImage(data: dataDecoded as Data)!
+            choreImageView.image = decodedimage
         }
         choreInformationTextView.text = chore.information
         choreDueDateLabel.text = "Due Date: \(dateFormatter.string(from: chore.dateFromString))"
@@ -82,7 +84,7 @@ class ChoreDetailViewController: UIViewController {
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Actions
     @IBAction func doneButtonTapped(_ sender: UIButton) {
-        let imageData = choreImageView.image?.jpegData(compressionQuality: 0.2)
+        let imageData = choreImageView.image?.jpegData(compressionQuality: 0.7)?.base64EncodedString()
         chore?.image = imageData
         guard let chore = chore, let newChore = Chore(representation: chore) else { return }
         childController?.completeChore(newChore) {
