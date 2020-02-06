@@ -24,7 +24,7 @@ struct ChoreRepresentation: Codable {
     var completed: Int
     var dueDate: String?
     var id: Int
-    var image: Data?
+    var image: String?
     var information: String?
     var parentId: Int
     var score: Int?
@@ -34,7 +34,7 @@ struct ChoreRepresentation: Codable {
     enum CodingKeys: String, CodingKey {
         case bonusPoints = "bonus_pts"
         case childId = "child_id"
-        case cleanStreak
+        case cleanStreak = "clean_strk"
         case comments
         case completed
         case dueDate = "due_date"
@@ -54,7 +54,7 @@ struct ChoreRepresentation: Codable {
          completed: Int,
          dueDate: String,
          id: Int,
-         image: Data?,
+         image: String?,
          information: String,
          parentId: Int,
          score: Int?,

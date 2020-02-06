@@ -33,8 +33,11 @@ class ChoresTableViewCell: UITableViewCell {
     
     private func updateViews() {
         guard let chore = chore else { return }
+        
         if let imageData = chore.image {
-            choreImageView.image = UIImage(data: imageData)
+            let dataDecoded: NSData = NSData(base64Encoded: imageData, options: NSData.Base64DecodingOptions(rawValue: 0))!
+            let decodedimage: UIImage = UIImage(data: dataDecoded as Data)!
+            choreImageView.image = decodedimage
         } else {
             choreImageView.image = UIImage(named: "chore_bg")
         }

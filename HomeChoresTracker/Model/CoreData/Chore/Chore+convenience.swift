@@ -48,7 +48,7 @@ extension Chore {
                       comments: String? = nil,
                       completed: Int16 = 0,
                       dueDate: Date? = nil,
-                      image: Data? = nil,
+                      image: String? = nil,
                       information: String? = nil,
                       score: Int16? = nil,
                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {

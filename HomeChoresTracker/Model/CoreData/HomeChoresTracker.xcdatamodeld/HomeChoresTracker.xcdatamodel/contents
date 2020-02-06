@@ -8,7 +8,7 @@
         <attribute name="completed" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="information" optional="YES" attributeType="String"/>
         <attribute name="parentId" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
