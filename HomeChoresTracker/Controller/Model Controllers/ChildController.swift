@@ -242,9 +242,11 @@ class ChildController {
         }
     }
     
-    func completeChore(_ chore: Chore, with url: URL, completion: @escaping () -> Void) {
+    func completeChore(_ chore: Chore, with url: URL? = nil, completion: @escaping () -> Void) {
         chore.completed = 1
-        chore.image = url.absoluteString
+        if let url = url {
+            chore.image = url.absoluteString
+        }
         updateChore(chore)
         completion()
     }
