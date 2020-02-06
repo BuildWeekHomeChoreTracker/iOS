@@ -45,15 +45,11 @@ class ChoreDetailViewController: UIViewController {
     private func updateViews() {
         guard let chore = chore, self.isViewLoaded else { return }
         choreTitleLabel.text = chore.title
-
+        
         childController?.fetchImage(for: chore) { image in
             if let image = image {
                 self.choreImageView.image = image
             }
-        if let imageData = chore.image {
-            let dataDecoded: NSData = NSData(base64Encoded: imageData, options: NSData.Base64DecodingOptions(rawValue: 0))!
-            let decodedimage: UIImage = UIImage(data: dataDecoded as Data)!
-            choreImageView.image = decodedimage
         }
         choreInformationTextView.text = chore.information
         choreDueDateLabel.text = "Due Date: \(dateFormatter.string(from: chore.dateFromString))"
@@ -99,11 +95,6 @@ class ChoreDetailViewController: UIViewController {
                     }
                 }
             }
-        let imageData = choreImageView.image?.jpegData(compressionQuality: 0.7)?.base64EncodedString()
-        chore?.image = imageData
-        guard let chore = chore, let newChore = Chore(representation: chore) else { return }
-        childController?.completeChore(newChore) {
-            self.navigationController?.popViewController(animated: true)
         }
     }
 }
