@@ -158,7 +158,7 @@ class ChildController {
         }
         
         let updateChoreURL = updateURL?.appendingPathComponent(String(chore.id))
-        guard var request = NetworkService.createRequest(url: updateChoreURL, method: .put) else {
+        guard var request = NetworkService.createRequest(url: updateChoreURL, method: .put, headerType: .contentType, headerValue: .json) else {
             let error = NSError(domain: "ChildController.updateChore: \(String(describing: chore.title)).requestError", code: NetworkService.NetworkError.badRequest.rawValue)
             complete(error)
             return
