@@ -13,6 +13,7 @@
 		63371F2223E9E1790072C8AB /* HomeChoreTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63371F2123E9E1790072C8AB /* HomeChoreTrackerUITests.swift */; };
 		634654B123EA0BFF002E792B /* ChoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634654B023EA0BFF002E792B /* ChoreTests.swift */; };
 		634654B423EA11CE002E792B /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634654B323EA11CE002E792B /* NetworkServiceTests.swift */; };
+		634819AB23ECAB3300690793 /* XCUIElement+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634819AA23ECAB3300690793 /* XCUIElement+Ext.swift */; };
 		634C32A723EB362E00BAEBEA /* ChoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C32A623EB362E00BAEBEA /* ChoreDetailViewController.swift */; };
 		634C32AA23EB422300BAEBEA /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C32A923EB422300BAEBEA /* UIDevice+Ext.swift */; };
 		634D42DA23EA1F6C00A6D53E /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D42D923EA1F6C00A6D53E /* ConcurrentOperation.swift */; };
@@ -74,6 +75,7 @@
 		63371F2123E9E1790072C8AB /* HomeChoreTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChoreTrackerUITests.swift; sourceTree = "<group>"; };
 		634654B023EA0BFF002E792B /* ChoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTests.swift; sourceTree = "<group>"; };
 		634654B323EA11CE002E792B /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		634819AA23ECAB3300690793 /* XCUIElement+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Ext.swift"; sourceTree = "<group>"; };
 		634C32A623EB362E00BAEBEA /* ChoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreDetailViewController.swift; sourceTree = "<group>"; };
 		634C32A923EB422300BAEBEA /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		634D42D923EA1F6C00A6D53E /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				63A102C823E8BD00003187E3 /* Info.plist */,
 				63371F2123E9E1790072C8AB /* HomeChoreTrackerUITests.swift */,
+				634819AA23ECAB3300690793 /* XCUIElement+Ext.swift */,
 			);
 			path = HomeChoresTrackerUITests;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63371F2223E9E1790072C8AB /* HomeChoreTrackerUITests.swift in Sources */,
+				634819AB23ECAB3300690793 /* XCUIElement+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

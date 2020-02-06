@@ -23,7 +23,7 @@ class HomeChoreTrackerUITests: XCTestCase {
         let password = app.secureTextFields["Password"]
         
         username.tap()
-        username.typeText("joshd\n")
+        username.clearandEnterText(text: "joshd\n")
         password.tap()
         password.typeText("test1\n")
         app.buttons["Sign In"].tap()
@@ -43,7 +43,7 @@ class HomeChoreTrackerUITests: XCTestCase {
         let password = app.secureTextFields["Password"]
         
         username.tap()
-        username.typeText("joshd\n")
+        username.clearandEnterText(text: "joshd\n")
         password.tap()
         password.typeText("test1\n")
         app.buttons["Sign In"].tap()
@@ -70,7 +70,7 @@ class HomeChoreTrackerUITests: XCTestCase {
         let password = app.secureTextFields["Password"]
         
         username.tap()
-        username.typeText("joshd\n")
+        username.clearandEnterText(text: "joshd\n")
         password.tap()
         password.typeText("test1\n")
         app.buttons["Sign In"].tap()
@@ -94,7 +94,7 @@ class HomeChoreTrackerUITests: XCTestCase {
         let password = app.secureTextFields["Password"]
         
         username.tap()
-        username.typeText("joshd\n")
+        username.clearandEnterText(text: "joshd\n")
         password.tap()
         password.typeText("test1\n")
         app.buttons["Sign In"].tap()
@@ -119,7 +119,8 @@ class HomeChoreTrackerUITests: XCTestCase {
         let password = app.secureTextFields["Password"]
         
         username.tap()
-        username.typeText("joshd\n")
+        
+        username.clearandEnterText(text: "joshd\n")
         password.tap()
         password.typeText("test1\n")
         app.buttons["Sign In"].tap()
