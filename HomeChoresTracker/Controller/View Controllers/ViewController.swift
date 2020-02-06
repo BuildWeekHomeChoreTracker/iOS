@@ -61,9 +61,10 @@ class ViewController: UIViewController, SegueHandler {
         childController.login(with: username, and: password) { error in
             if let error = error {
                 self.showAlert(with: "Error", and: error.localizedDescription)
+            } else {
+                self.userDefaults.lastLoggedInUser = username
+                self.performSegue(withIdentifier: .showChoreSegue)
             }
-            self.userDefaults.lastLoggedInUser = username
-            self.performSegue(withIdentifier: .showChoreSegue)
         }
     }
 }
