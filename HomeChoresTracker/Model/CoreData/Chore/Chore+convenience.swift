@@ -71,7 +71,7 @@ extension Chore {
     }
     
     // MARK: - Rep Convenience Init
-    convenience init?(representation: ChoreRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init?(representation: ChoreRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(id: Int16(representation.id),
                   childId: Int16(representation.childId),
                   parentId: Int16(representation.parentId),

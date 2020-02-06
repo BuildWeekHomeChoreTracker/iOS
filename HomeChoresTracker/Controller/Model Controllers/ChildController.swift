@@ -6,6 +6,7 @@ class ChildController {
     private let loginURL = URL(string: "https://chore-tracker1.herokuapp.com/api/auth/login/child")
     private let choreURL = URL(string: "https://chore-tracker1.herokuapp.com/api/auth/child")
     private let updateURL = URL(string: "https://chore-tracker1.herokuapp.com/api/chore")
+    private let mainContext = CoreDataStack.shared.mainContext
     let storageRef = Storage.storage().reference()
     var bearer: Bearer?
     var chores = [ChoreRepresentation]()
@@ -65,6 +66,12 @@ class ChildController {
         }
     }
     
+    // MARK: - Create
+    func createMOCChore(representation: ChoreRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        Chore(representation: representation, context: context)
+        try? CoreDataStack.shared.save(context)
+    }
+    
     // MARK: - Read
     func getChores(complete: @escaping NetworkService.CompletionWithError  = { error in }) {
         guard let bearer = bearer else {
@@ -98,6 +105,14 @@ class ChildController {
             }
             
             guard let data = data else {
+                let error = NSError(domain: "ChildController.getChild.noData", code: NetworkService.NetworkError.notFound.rawValue)
+                DispatchQueue.main.async {
+                    complete(error)
+                }
+                return
+            }
+            
+            guard let jsonChores = NetworkService.decode(to: AllChores.self, data: data) as? AllChores else {
                 let error = NSError(domain: "ChildController.getChild.decodeData", code: NetworkService.NetworkError.badDecode.rawValue)
                 DispatchQueue.main.async {
                     complete(error)
@@ -105,19 +120,44 @@ class ChildController {
                 return
             }
             
-            guard let jsonChores = NetworkService.decode(to: AllChores.self, data: data) else {
-                let error = NSError(domain: "ChildController.getChild.decodeData", code: NetworkService.NetworkError.badDecode.rawValue)
-                DispatchQueue.main.async {
+            let context = CoreDataStack.shared.backgroundContext
+            context.performAndWait {
+                do {
+                    //get array of ids for searching in CoreData
+                    let apiChoreIds = jsonChores.chores.compactMap { $0.id }
+                    //create fetchRequest and assign predicate as searched id
+                    let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
+                    fetchRequest.predicate = NSPredicate(format: "id IN %@", apiChoreIds)
+                    //create array of matching chores (these are chores on disk, and on the API)
+                    let savedChoresInSearch = try context.fetch(fetchRequest)
+                    var apiChoreDict = Dictionary(uniqueKeysWithValues: zip(apiChoreIds, jsonChores.chores))
+                    
+                    //update just those chores
+                    var choreReps = [ChoreRepresentation]()
+                    for chore in savedChoresInSearch {
+                        guard let rep = chore.choreRepresentation else {
+                            let error = NSError(domain: "GetChores.updateChores.createChoreReps", code: 999)
+                            complete(error)
+                            return
+                        }
+                        choreReps.append(rep)
+                        apiChoreDict.removeValue(forKey: rep.id)
+                    }
+                    //update the API chores
+                    self.updateMOCChores(representations: choreReps)
+                    //Create Managed Objects out of the rest of chores
+                    for (_, chore) in apiChoreDict {
+                        Chore(representation: chore, context: context)
+                    }
+                    try? context.save()
+                    
+                    
+                    DispatchQueue.main.async {
+                        complete(nil)
+                    }
+                } catch {
+                    NSLog("Error decoding JSON data: \(error)")
                     complete(error)
-                }
-                return
-            }
-            
-            
-            if let jsonChores = jsonChores as? AllChores {
-                self.chores = jsonChores.chores
-                DispatchQueue.main.async {
-                    complete(nil)
                 }
             }
         }
@@ -180,6 +220,46 @@ class ChildController {
     
     
     // MARK: - Update
+    func updateMOCChores(representations: [ChoreRepresentation]) {
+        func updateEntries(with representations: [ChoreRepresentation]) {
+            let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
+            let identifiers = representations.map { $0.id }
+            var repDict = Dictionary(uniqueKeysWithValues: zip(identifiers, representations))
+            
+            fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiers)
+            let context = CoreDataStack.shared.container.newBackgroundContext()
+            context.perform {
+                do {
+                    let chores = try context.fetch(fetchRequest)
+                    for chore in chores {
+                        guard let representation = repDict[Int(chore.id)] else { continue }
+                        self.updateChore(chore: chore, choreRep: representation)
+                        repDict.removeValue(forKey: Int(chore.id))
+                    }
+                    for rep in repDict.values {
+                        Chore(representation: rep)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            try? CoreDataStack.shared.save(context)
+        }
+    }
+    
+    func updateChore(chore: Chore, choreRep: ChoreRepresentation) {
+        chore.completed = Int16(choreRep.completed)
+        chore.image = choreRep.image
+        chore.comments = choreRep.comments
+        chore.dueDate = choreRep.dateFromString
+        if let bonusPoints = choreRep.bonusPoints {
+            chore.bonusPoints = Int16(bonusPoints)
+        }
+        if let cleanStreak = choreRep.cleanStreak {
+            chore.cleanStreak = Int16(cleanStreak)
+        }
+    }
+    
     /**
      Update chore on the API
      */
@@ -203,7 +283,7 @@ class ChildController {
             complete(error)
             return
         }
-
+        
         guard let encodeRequest = encodingStatus.request else { return }
         networkLoader.loadData(using: encodeRequest) { _, response, error in
             if let error = error {
@@ -266,14 +346,4 @@ class ChildController {
         updateMOCChore(context)
     }
     
-    // MARK: - MOCK DATA
-    let mockChore = Chore(id: 1,
-                          childId: 6,
-                          parentId: 1,
-                          title: "Chop some trees",
-                          bonusPoints: 5,
-                          cleanStreak: 7,
-                          dueDate: Date(timeIntervalSinceNow: 900),
-                          information: "Chop them well",
-                          score: 9000)
 }
