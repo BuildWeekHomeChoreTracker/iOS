@@ -11,6 +11,12 @@ import XCTest
 
 class NetworkingTests: XCTestCase {
     
+    func testUserDefaultsKey() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.lastLoggedInUser = "Bill"
+        XCTAssertEqual(userDefaults.lastLoggedInUser, "Bill")
+    }
+    
     func testFetchChores() {
         let controller = ChildController()
         let loginExpectation = expectation(description: "Waiting to login")
@@ -25,7 +31,7 @@ class NetworkingTests: XCTestCase {
         
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
-        controller.apiChores { error in
+        controller.getChores { error in
             XCTAssertNil(error)
             XCTAssert(!controller.chores.isEmpty)
             choresExpectation.fulfill()
@@ -35,12 +41,45 @@ class NetworkingTests: XCTestCase {
         XCTAssertTrue(!controller.chores.isEmpty)
     }
     
+    func testFetchImage() {
+        let controller = ChildController()
+        let loginExpectation = expectation(description: "Waiting to login")
+        
+        controller.login(with: "joshd", and: "test1") { error in
+            XCTAssertNil(error)
+            loginExpectation.fulfill()
+        }
+        
+        wait(for: [loginExpectation], timeout: 10)
+        XCTAssertNotNil(controller.bearer)
+        
+        let choresExpectation = expectation(description: "Waiting for chores to load")
+        
+        controller.getChores { error in
+            XCTAssertNil(error)
+            XCTAssert(!controller.chores.isEmpty)
+            choresExpectation.fulfill()
+        }
+        
+        wait(for: [choresExpectation], timeout: 10)
+        
+        let imageExpectation = expectation(description: "Wait for image")
+        if let lastChore = controller.chores.last {
+            controller.fetchImage(for: lastChore) { image in
+                XCTAssertNotNil(image)
+                imageExpectation.fulfill()
+            }
+        }
+        
+        wait(for: [imageExpectation], timeout: 10)
+    }
+    
     func testfetchMockChores() {
         let mock = MockLoader()
         mock.data = goodChores
         
         let controller = ChildController(networkLoader: mock)
-        controller.bearer = Bearer(message: "1", token: """
+        controller.bearer = Bearer(id: "1", token: """
                 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
                 eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYX
                 QiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vn
@@ -48,7 +87,7 @@ class NetworkingTests: XCTestCase {
                 """)
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
-        controller.apiChores { error in
+        controller.getChores { error in
             XCTAssertNil(error)
             XCTAssert(!controller.chores.isEmpty)
             choresExpectation.fulfill()
@@ -65,7 +104,7 @@ class NetworkingTests: XCTestCase {
         mock.data = badChores
         
         let controller = ChildController(networkLoader: mock)
-        controller.bearer = Bearer(message: "1", token: """
+        controller.bearer = Bearer(id: "1", token: """
                 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
                 eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYX
                 QiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vn
@@ -73,7 +112,7 @@ class NetworkingTests: XCTestCase {
                 """)
         let choresExpectation = expectation(description: "Waititng for chores to load")
         
-        controller.apiChores { error in
+        controller.getChores { error in
             if let error = error {
                 XCTAssertNotNil(error)
             }
@@ -90,7 +129,7 @@ class NetworkingTests: XCTestCase {
         mock.data = noChores
         
         let controller = ChildController(networkLoader: mock)
-        controller.bearer = Bearer(message: "1", token: """
+        controller.bearer = Bearer(id: "1", token: """
                 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
                 eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiam9zaGQiLCJpYX
                 QiOjE1ODA4MjI5MjYsImV4cCI6MTU4MDg1MTcyNn0.nB-vn
@@ -98,7 +137,7 @@ class NetworkingTests: XCTestCase {
                 """)
         let choresExpectation = expectation(description: "Waiting for chores to load")
         
-        controller.apiChores { error in
+        controller.getChores { error in
             XCTAssertNil(error)
             XCTAssert(controller.chores.isEmpty)
             choresExpectation.fulfill()

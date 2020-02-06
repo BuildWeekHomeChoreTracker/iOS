@@ -43,9 +43,8 @@ class ChoresTableViewCell: UITableViewCell {
             doneButton.setImage(UIImage(systemName: "rectangle.badge.checkmark"), for: .normal)
         } else {
             doneButton.setImage(UIImage(systemName: "checkmark.rectangle"), for: .normal)
-        }        
-        guard let chore = chore, let childController = childController else { return }
-        childController.fetchImage(for: chore) { image in
+        }
+        childController?.fetchImage(for: chore) { image in
             self.choreImageView.image = image ?? UIImage(named: "chore_bg")
         }
         choreTitleLabel.text = chore.title

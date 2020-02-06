@@ -13,10 +13,21 @@ class NetworkServiceTests: XCTestCase {
     
     func testNetworkServiceEncode() {
         let request = URLRequest(url: URL(string: "https://chore-tracker1.herokuapp.com/api/chore")!)
-        let child = ChildRepresentation(name: "Bobby", parentName: "Dave", cleanStreak: 5, chores: [])
-        let status = NetworkService.encode(from: child.self, request: request)
-        let childData = try? JSONEncoder().encode(child)
-        XCTAssertEqual(status.request?.httpBody, childData)
+        let chore = ChoreRepresentation(bonusPoints: 5,
+                                        childId: 5,
+                                        cleanStreak: 5,
+                                        comments: "",
+                                        completed: 1,
+                                        dueDate: "",
+                                        id: 1,
+                                        image: nil,
+                                        information: "",
+                                        parentId: 4,
+                                        score: 5,
+                                        title: "Wash Dishes")
+        let status = NetworkService.encode(from: chore, request: request)
+        let choreData = try? JSONEncoder().encode(chore)
+        XCTAssertEqual(status.request?.httpBody, choreData)
     }
     
     func testCreateRequest() {

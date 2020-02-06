@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AllChores: Decodable {
+struct AllChores: Decodable, Equatable {
     var chores: [ChoreRepresentation] // "chore:[ChoreRepresentation]
     
     enum CodingKeys: String, CodingKey {
@@ -16,7 +16,7 @@ struct AllChores: Decodable {
     }
 }
 
-struct ChoreRepresentation: Codable {
+struct ChoreRepresentation: Codable, Equatable {
     var bonusPoints: Int?
     var childId: Int
     var cleanStreak: Int?
