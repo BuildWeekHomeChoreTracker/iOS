@@ -72,7 +72,7 @@ class ChildController {
         try? CoreDataStack.shared.save(context)
     }
     
-    // MARK: - Read
+    // MARK: - Read From API
     func getChores(complete: @escaping NetworkService.CompletionWithError  = { error in }) {
         guard let bearer = bearer else {
             let error = NSError(domain: "ChildController.bearer", code: NetworkService.NetworkError.unauth.rawValue)
@@ -121,49 +121,54 @@ class ChildController {
             }
             
             self.chores = jsonChores.chores
-            
+            filterAndSaveChores()
+    }
+        /**
+         After retrieving Chores from the API, compare the IDs retrieved to the IDs on disk. Any IDs found will have their data on disk overwritten with data from the API. Any IDs not found will have new chores created on disk
+         */
+        func filterAndSaveChores() {
             let context = CoreDataStack.shared.backgroundContext
-            context.performAndWait {
-                do {
-                    //get array of ids for searching in CoreData
-                    let apiChoreIds = jsonChores.chores.compactMap { $0.id }
-                    //create fetchRequest and assign predicate as searched id
-                    let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
-                    fetchRequest.predicate = NSPredicate(format: "id IN %@", apiChoreIds)
-                    //create array of matching chores (these are chores on disk, and on the API)
-                    let savedChoresInSearch = try context.fetch(fetchRequest)
-                    var apiChoreDict = Dictionary(uniqueKeysWithValues: zip(apiChoreIds, jsonChores.chores))
-                    
-                    //update just those chores
-                    var choreReps = [ChoreRepresentation]()
-                    for chore in savedChoresInSearch {
-                        guard let rep = chore.choreRepresentation else {
-                            let error = NSError(domain: "GetChores.updateChores.createChoreReps", code: 999)
-                            complete(error)
-                            return
+                context.performAndWait {
+                    do {
+                        //get array of ids for searching in CoreData
+                        let apiChoreIds = self.chores.compactMap { $0.id }
+                        //create fetchRequest and assign predicate as searched id
+                        let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
+                        fetchRequest.predicate = NSPredicate(format: "id IN %@", apiChoreIds)
+                        //create array of matching chores (these are chores on disk, and on the API)
+                        let savedChoresInSearch = try context.fetch(fetchRequest)
+                        var apiChoreDict = Dictionary(uniqueKeysWithValues: zip(apiChoreIds, self.chores))
+                        
+                        //update just those chores
+                        var choreReps = [ChoreRepresentation]()
+                        for chore in savedChoresInSearch {
+                            guard let rep = chore.choreRepresentation else {
+                                let error = NSError(domain: "GetChores.updateChores.createChoreReps", code: 999)
+                                complete(error)
+                                return
+                            }
+                            choreReps.append(rep)
+                            apiChoreDict.removeValue(forKey: rep.id)
                         }
-                        choreReps.append(rep)
-                        apiChoreDict.removeValue(forKey: rep.id)
+                        //update the API chores
+                        self.updateMOCChores(representations: choreReps, context: context)
+                        //Create Managed Objects out of the rest of chores
+                        for (_, chore) in apiChoreDict {
+                            self.createMOCChore(representation: chore, context: context)
+                        }
+                        try? context.save()
+                        
+                        
+                        DispatchQueue.main.async {
+                            complete(nil)
+                        }
+                    } catch {
+                        NSLog("Error decoding JSON data: \(error)")
+                        complete(error)
                     }
-                    //update the API chores
-                    self.updateMOCChores(representations: choreReps, context: context)
-                    //Create Managed Objects out of the rest of chores
-                    for (_, chore) in apiChoreDict {
-                        self.createMOCChore(representation: chore, context: context)
-                    }
-                    try? context.save()
-                    
-                    
-                    DispatchQueue.main.async {
-                        complete(nil)
-                    }
-                } catch {
-                    NSLog("Error decoding JSON data: \(error)")
-                    complete(error)
                 }
             }
         }
-    }
     
     func fetchImage(for chore: ChoreRepresentation, completion: @escaping (UIImage?) -> Void) {
         guard let image = chore.image, let url = URL(string: image) else { return }
@@ -195,32 +200,6 @@ class ChildController {
         }
     }
     
-    // MARK: - Helper Methods
-    /**
-     Unwraps createRequest() and encodeUser()
-     */
-    private func createRequestAndEncodeUser(user: User,
-                                            url: URL?,
-                                            method: NetworkService.HttpMethod,
-                                            headerType: NetworkService.HttpHeaderType,
-                                            headerValue: NetworkService.HttpHeaderValue) -> URLRequest? {
-        guard let request = NetworkService.createRequest(url: url, method: method, headerType: headerType, headerValue: headerValue) else {
-            print(NSError(domain: "BadRequest", code: 400))
-            return nil
-        }
-        let encodingStatus = NetworkService.encode(from: user, request: request)
-        if let encodingError = encodingStatus.error {
-            print(encodingError)
-            return nil
-        }
-        guard let postRequest = encodingStatus.request else {
-            print("post request error!")
-            return nil
-        }
-        return postRequest
-    }
-    
-    
     // MARK: - Update
     func updateMOCChores(representations: [ChoreRepresentation], context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         func updateEntries(with representations: [ChoreRepresentation]) {
@@ -248,7 +227,10 @@ class ChildController {
             try? CoreDataStack.shared.save(context)
         }
     }
-    
+    /**
+     - parameter chore: The chore on disk
+     - parameter choreRep: The chore from the API or the chore's "choreRepresentation" property
+     */
     func updateChore(chore: Chore, choreRep: ChoreRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         chore.completed = Int16(choreRep.completed)
         chore.image = choreRep.image
@@ -301,8 +283,8 @@ class ChildController {
         }
     }
     
-    func uploadImage(for chore: ChoreRepresentation, image: Data, completion: @escaping (URL?) -> Void) {
-        storageRef.child("choreImages/\(chore.title)\(chore.id).jpg") .putData(image, metadata: nil) { _, error in
+    func uploadImage(for choreRep: ChoreRepresentation, image: Data, completion: @escaping (URL?) -> Void) {
+        storageRef.child("choreImages/\(choreRep.title)\(choreRep.id).jpg") .putData(image, metadata: nil) { _, error in
             guard error == nil else {
                 DispatchQueue.main.async {
                     completion(nil)
@@ -310,7 +292,7 @@ class ChildController {
                 return
             }
             
-            self.storageRef.child("choreImages/\(chore.title)\(chore.id).jpg").downloadURL { url, error in
+            self.storageRef.child("choreImages/\(choreRep.title)\(choreRep.id).jpg").downloadURL { url, error in
                 guard error == nil else {
                     DispatchQueue.main.async {
                         completion(nil)
@@ -346,6 +328,31 @@ class ChildController {
             updateAPIChore(rep)
         }
         updateMOCChore(context)
+    }
+    
+    // MARK: - Helper Methods
+    /**
+     Unwraps createRequest() and encodeUser()
+     */
+    private func createRequestAndEncodeUser(user: User,
+                                            url: URL?,
+                                            method: NetworkService.HttpMethod,
+                                            headerType: NetworkService.HttpHeaderType,
+                                            headerValue: NetworkService.HttpHeaderValue) -> URLRequest? {
+        guard let request = NetworkService.createRequest(url: url, method: method, headerType: headerType, headerValue: headerValue) else {
+            print(NSError(domain: "BadRequest", code: 400))
+            return nil
+        }
+        let encodingStatus = NetworkService.encode(from: user, request: request)
+        if let encodingError = encodingStatus.error {
+            print(encodingError)
+            return nil
+        }
+        guard let postRequest = encodingStatus.request else {
+            print("post request error!")
+            return nil
+        }
+        return postRequest
     }
     
 }
