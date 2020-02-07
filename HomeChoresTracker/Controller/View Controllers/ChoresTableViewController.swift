@@ -66,6 +66,16 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
         }
     }
     
+    func shrink(cell: UITableViewCell, down: Bool) {
+        UIView.animate(withDuration: 0.6) {
+            if down {
+                cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            } else {
+                cell.transform = .identity
+            }
+        }
+    }
+    
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Private
     private func showAlert(with title: String, and message: String) {
@@ -101,6 +111,7 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: .choreCell, for: indexPath) as? ChoresTableViewCell else { return UITableViewCell() }
         let chore = fetchedResultsController.object(at: indexPath).choreRepresentation
+        cell.selectionStyle = .none
         cell.chore = chore
         cell.childController = childController
         return cell
@@ -116,6 +127,17 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
             return "Chores I've done"
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        shrink(cell: cell, down: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        shrink(cell: cell, down: false)
+    }
+    
 }
 
 // MARK: - NSFetchedResultsController Delegate Methods

@@ -86,6 +86,29 @@ class ChoreDetailViewController: UIViewController {
         }
     }
     
+    ///Squash animation over 1.15 seconds after tapping done
+    func animateDoneButton(doneButton: UIButton, complete: @escaping NetworkService.Complete) {
+        let animationBlock = {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2) {
+                doneButton.transform = CGAffineTransform(scaleX: 1.7, y: 0.3)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.2) {
+                doneButton.transform = CGAffineTransform(scaleX: 0.6, y: 1.7)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0.15) {
+                doneButton.transform = CGAffineTransform(scaleX: 1.11, y: 0.9)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.55, relativeDuration: 0.15) {
+                doneButton.transform = .identity
+            }
+        }
+        UIView.animateKeyframes(withDuration: 1.15, delay: 0, options: [], animations: animationBlock) { _ in
+            complete()
+        }
+    }
+    
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Actions
     ///save the image to the API, and on disk
@@ -136,27 +159,6 @@ class ChoreDetailViewController: UIViewController {
                     }
                 }
             }
-        }
-    }
-    func animateDoneButton(doneButton: UIButton, complete: @escaping NetworkService.Complete) {
-        let animationBlock = {
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2) {
-                doneButton.transform = CGAffineTransform(scaleX: 1.7, y: 0.3)
-            }
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.2) {
-                doneButton.transform = CGAffineTransform(scaleX: 0.6, y: 1.7)
-            }
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0.15) {
-                doneButton.transform = CGAffineTransform(scaleX: 1.11, y: 0.9)
-            }
-            UIView.addKeyframe(withRelativeStartTime: 0.55, relativeDuration: 0.15) {
-                doneButton.transform = .identity
-            }
-        }
-        UIView.animateKeyframes(withDuration: 1.15, delay: 0, options: [], animations: animationBlock) { _ in
-            complete()
         }
     }
 }
