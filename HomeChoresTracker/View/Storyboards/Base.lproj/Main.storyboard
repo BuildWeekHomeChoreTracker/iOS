@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,87 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HomeChoresTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="WMm-0e-OcH">
+                                <rect key="frame" x="16" y="178" width="382" height="102"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qcz-vU-FsZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Username"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="IGD-Oa-CUb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KjK-a4-6wB">
+                                        <rect key="frame" x="0.0" y="58" width="382" height="44"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Password"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="xgV-b3-L3G"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Chore Tracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlD-rM-Cwa">
+                                <rect key="frame" x="92" y="84" width="230" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.70196078431372544" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOU-WF-5sk" customClass="RoundedButton" customModule="HomeChoresTracker" customModuleProvider="target">
+                                <rect key="frame" x="76" y="307" width="262" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.70630693440000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iTQ-eU-Es3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="16F-ic-gSw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15999373789999999" green="0.70562808565753421" blue="0.63341881969315061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="MOU-WF-5sk" firstAttribute="top" secondItem="KjK-a4-6wB" secondAttribute="bottom" constant="27" id="85F-Q9-Ert"/>
+                            <constraint firstItem="PlD-rM-Cwa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="KYQ-As-9uW"/>
+                            <constraint firstItem="MOU-WF-5sk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="76" id="eky-6I-qLc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WMm-0e-OcH" secondAttribute="trailing" constant="16" id="hl8-ak-UzO"/>
+                            <constraint firstItem="WMm-0e-OcH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="i57-De-8Ml"/>
+                            <constraint firstItem="WMm-0e-OcH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="134" id="lHG-QJ-Ymk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MOU-WF-5sk" secondAttribute="trailing" constant="76" id="mCP-hv-VbZ"/>
+                            <constraint firstItem="PlD-rM-Cwa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="uSg-uO-9Ww"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="KjK-a4-6wB" id="Vr2-Gg-rXO"/>
+                        <outlet property="usernameTextField" destination="qcz-vU-FsZ" id="9Pn-TQ-8yC"/>
+                        <segue destination="fXa-dq-k1k" kind="show" identifier="ShowChoreSegue" id="2kY-vp-1DD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="138"/>
+        </scene>
+        <!--Chore-->
+        <scene sceneID="D7j-wG-XrN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chore" id="fXa-dq-k1k" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ulw-i2-KK8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ADc-hy-8Xz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773" y="99"/>
         </scene>
     </scenes>
 </document>
