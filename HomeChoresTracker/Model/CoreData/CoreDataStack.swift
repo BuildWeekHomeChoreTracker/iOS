@@ -8,7 +8,9 @@
 
 import Foundation
 import CoreData
-
+/**
+ CoreData wrapper used to help manage contexts
+ */
 class CoreDataStack {
     static let shared = CoreDataStack()
     

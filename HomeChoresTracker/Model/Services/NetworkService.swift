@@ -22,6 +22,8 @@ struct Bearer: Codable {
 }
 
 class NetworkService {
+// MARK: - Types
+    
     // MARK: - Completion Handlers
     typealias CompletionWithError = (Error?) -> Void
     typealias Complete = () -> Void
