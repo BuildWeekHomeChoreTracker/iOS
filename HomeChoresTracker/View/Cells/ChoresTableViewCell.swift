@@ -30,6 +30,7 @@ class ChoresTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+    ///Pretty print the date string returned from the API
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
