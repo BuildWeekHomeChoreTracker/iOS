@@ -203,6 +203,7 @@
 		637703FE23E9BACA0076C177 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				634D42D923EA1F6C00A6D53E /* ConcurrentOperation.swift */,
 				637703FF23E9BAD70076C177 /* SegueHandler.swift */,
 			);
 			path = Protocols;
@@ -242,7 +243,6 @@
 		63D7388A23E8D9D900A8AC25 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				634D42D923EA1F6C00A6D53E /* ConcurrentOperation.swift */,
 				63FEDF7A23E9ED7B00BCA319 /* NetworkDataLoader.swift */,
 				634D42DB23EA1F7F00A6D53E /* FetchChoresOperation.swift */,
 			);

@@ -22,6 +22,7 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
             NSSortDescriptor(key: "completed", ascending: true),
             NSSortDescriptor(key: "dueDate", ascending: false)
         ]
+        fetchRequest.predicate = NSPredicate(format: "childId = %@", childController?.bearer?.id ?? "1")
         let context = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "completed", cacheName: nil)
         frc.delegate = self
@@ -64,10 +65,11 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
             updateOp.addDependency(fetchChoresOp)
             OperationQueue.main.addOperation(updateOp)
         }
+        self.tableView.delaysContentTouches = false
     }
     
     func shrink(cell: UITableViewCell, down: Bool) {
-        UIView.animate(withDuration: 0.6) {
+        UIView.animate(withDuration: 0.3) {
             if down {
                 cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
             } else {
