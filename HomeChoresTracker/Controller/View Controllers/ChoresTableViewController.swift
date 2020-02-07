@@ -39,7 +39,7 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
                                       information: "Chop them well",
                                       score: 9000),
                 let rep = mockChore.choreRepresentation
-            else { return frc }
+                else { return frc }
             childController.chores = [rep]
         }
         return frc
@@ -79,7 +79,7 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
         case .showChoreDetail:
             guard let choreDetailVC = segue.destination as? ChoreDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow
-            else { return }
+                else { return }
             choreDetailVC.chore = fetchedResultsController.object(at: indexPath).choreRepresentation
             choreDetailVC.childController = childController
         }
@@ -118,11 +118,33 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
 
 extension ChoresTableViewController: NSFetchedResultsControllerDelegate {
     
-        func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                        didChange anObject: Any,
-                        at indexPath: IndexPath?,
-                        for type: NSFetchedResultsChangeType,
-                        newIndexPath: IndexPath?) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int,
+                    for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+        default:
+            break
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             guard let newIndexPath = newIndexPath else { return }
