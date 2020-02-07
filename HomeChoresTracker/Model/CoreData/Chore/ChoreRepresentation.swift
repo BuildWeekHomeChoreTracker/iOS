@@ -73,10 +73,10 @@ struct ChoreRepresentation: Codable, Equatable {
         self.completed = completed
     }
     
+    ///Easily convert a date from the API's String date
     var dateFromString: Date {
         let df = DateFormatter()
         df.dateStyle = .short
-        #warning("This may have to change depending on how the front end guys format their date. It's just a string on the API side")
         df.timeStyle = .none
         guard let date = df.date(from: self.dueDate ?? "12-12-1970") else { return Date() }
         return date

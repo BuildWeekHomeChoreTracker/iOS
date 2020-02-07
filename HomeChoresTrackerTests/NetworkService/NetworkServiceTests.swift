@@ -43,7 +43,7 @@ class NetworkServiceTests: XCTestCase {
         XCTAssertEqual(request, createdRequest)
     }
     
-    func testDecodeChild() {
+    func testDecodeChores() {
         let choreData = goodChores
         let chores = NetworkService.decode(to: AllChores.self, data: choreData) as? AllChores
         XCTAssertNotNil(chores)

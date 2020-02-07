@@ -7,7 +7,9 @@
 //
 
 import Foundation
-
+/**
+ Holds keys and methods for manipulating UserDefaults
+ */
 extension UserDefaults {
     public enum Keys {
         static let lastLoggedInUser = "lastLoggedInUser"
@@ -19,8 +21,8 @@ extension UserDefaults {
             set(newValue, forKey: Keys.lastLoggedInUser)
         }
         get {
-            let boolKey = string(forKey: Keys.lastLoggedInUser)
-            return boolKey ?? ""
+            let loggedInKey = string(forKey: Keys.lastLoggedInUser)
+            return loggedInKey ?? ""
         }
     }
 }

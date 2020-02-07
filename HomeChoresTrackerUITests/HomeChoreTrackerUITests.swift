@@ -108,8 +108,8 @@ class HomeChoreTrackerUITests: XCTestCase {
         wait(for: [exp], timeout: 4)
         XCTAssert(app.staticTexts["Chores"].exists)
         
-        app.cells.staticTexts["vacuum"].tap()
-        XCTAssert(app.staticTexts["vacuum"].exists)
+        app.cells.staticTexts["Take the trash outside"].tap()
+        XCTAssert(app.staticTexts["Take the trash outside"].exists)
         app.buttons["All Done!"].tap()
         XCTAssert(app.staticTexts["Chores"].exists)
     }

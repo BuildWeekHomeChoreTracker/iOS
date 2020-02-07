@@ -8,6 +8,7 @@
 
 import Foundation
 
+///returns the ChoreTableViewController's UITableView Cell's identifier
 extension String {
     static let choreCell = "ChoreCell"
 }
