@@ -322,12 +322,12 @@ class ChildController {
         }
     }
     
-    func completeChore(_ chore: Chore, with url: URL? = nil, completion: @escaping () -> Void) {
+    func completeChore(_ chore: Chore, with url: URL? = nil, context: NSManagedObjectContext = CoreDataStack.shared.mainContext, completion: @escaping () -> Void) {
         chore.completed = 1
         if let url = url {
             chore.image = url.absoluteString
         }
-        updateChore(chore)
+        updateChore(chore, context: context)
         completion()
     }
     

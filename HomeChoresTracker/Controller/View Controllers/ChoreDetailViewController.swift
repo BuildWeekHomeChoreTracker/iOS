@@ -8,6 +8,7 @@
 
 import UIKit
 import PhotosUI
+import CoreData
 
 class ChoreDetailViewController: UIViewController {
     
@@ -88,17 +89,44 @@ class ChoreDetailViewController: UIViewController {
         if let imageData = choreImageView.image?.jpegData(compressionQuality: 0.7) {
             childController?.uploadImage(for: chore, image: imageData) { url in
                 if let url = url {
-                    if let newChore = Chore(representation: chore) {
-                        self.childController?.completeChore(newChore, with: url) {
-                            self.navigationController?.popViewController(animated: true)
+                    //get array of ids for searching in CoreData
+                   //create fetchRequest and assign predicate as searched id
+                    let context = CoreDataStack.shared.backgroundContext
+                    context.performAndWait {
+                        do {
+                            let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
+                            let idArray = [chore.id]
+                            fetchRequest.predicate = NSPredicate(format: "id IN %@", idArray)
+                            let chore = try context.fetch(fetchRequest)
+                            if let firstChore = chore.first {
+                                self.childController?.completeChore(firstChore, with: url, context: context) {
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            }
+                            
+                        } catch {
+                            print(error)
                         }
                     }
+                   
                 }
             }
         } else {
-            if let newChore = Chore(representation: chore) {
-                self.childController?.completeChore(newChore) {
-                    self.navigationController?.popViewController(animated: true)
+            let context = CoreDataStack.shared.backgroundContext
+            context.performAndWait {
+                do {
+                    let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
+                    let idArray = [chore.id]
+                    fetchRequest.predicate = NSPredicate(format: "id IN %@", idArray)
+                    let chore = try context.fetch(fetchRequest)
+                    if let firstChore = chore.first {
+                        self.childController?.completeChore(firstChore, context: context) {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                    
+                } catch {
+                    print(error)
                 }
             }
         }
