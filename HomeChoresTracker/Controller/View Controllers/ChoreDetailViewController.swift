@@ -18,6 +18,7 @@ class ChoreDetailViewController: UIViewController {
     @IBOutlet private weak var choreImageView: UIImageView!
     @IBOutlet private weak var choreInformationTextView: UITextView!
     @IBOutlet private weak var choreDueDateLabel: UILabel!
+    @IBOutlet private weak var choreCommentsTextField: UITextView!
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
@@ -46,6 +47,7 @@ class ChoreDetailViewController: UIViewController {
     private func updateViews() {
         guard let chore = chore, self.isViewLoaded else { return }
         choreTitleLabel.text = chore.title
+        choreCommentsTextField.text = chore.comments
         childController?.fetchImage(for: chore) { image in
             if let image = image {
                 self.choreImageView.image = image
