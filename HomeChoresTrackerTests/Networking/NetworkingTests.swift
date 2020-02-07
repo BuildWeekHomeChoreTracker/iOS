@@ -64,14 +64,14 @@ class NetworkingTests: XCTestCase {
         wait(for: [choresExpectation], timeout: 10)
         
         let imageExpectation = expectation(description: "Wait for image")
-        if let lastChore = controller.chores.last {
-            controller.fetchImage(for: lastChore) { image in
+        if let firstChore = controller.chores.first {
+            controller.fetchImage(for: firstChore) { image in
                 XCTAssertNotNil(image)
                 imageExpectation.fulfill()
             }
         }
         
-        wait(for: [imageExpectation], timeout: 10)
+        wait(for: [imageExpectation], timeout: 20)
     }
     
     func testfetchMockChores() {
