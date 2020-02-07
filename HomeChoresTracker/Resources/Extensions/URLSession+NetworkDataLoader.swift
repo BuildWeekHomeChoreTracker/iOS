@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ URLSession abstraction for testing purposes
+ */
 extension URLSession: NetworkDataLoader {
     func loadData(using request: URLRequest, completion: @escaping (Data?, HTTPURLResponse?, Error?) -> Void) {
         dataTask(with: request) { data, response, error in
