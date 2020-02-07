@@ -120,6 +120,8 @@ class ChildController {
                 return
             }
             
+            self.chores = jsonChores.chores
+            
             let context = CoreDataStack.shared.backgroundContext
             context.performAndWait {
                 do {
