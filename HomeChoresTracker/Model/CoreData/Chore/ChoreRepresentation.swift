@@ -73,6 +73,7 @@ struct ChoreRepresentation: Codable, Equatable {
         self.completed = completed
     }
     
+    ///Easily convert a date from the API's String date
     var dateFromString: Date {
         let df = DateFormatter()
         df.dateStyle = .short

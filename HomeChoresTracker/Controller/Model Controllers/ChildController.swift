@@ -134,7 +134,7 @@ class ChildController {
                         let apiChoreIds = self.chores.compactMap { $0.id }
                         //create fetchRequest and assign predicate as searched id
                         let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
-                        fetchRequest.predicate = NSPredicate(format: "id IN %@ AND childID = %@", apiChoreIds, bearer.id)
+                        fetchRequest.predicate = NSPredicate(format: "id IN %@ AND childId = %@", apiChoreIds, bearer.id)
                         //create array of matching chores (these are chores on disk, and on the API)
                         let savedChoresInSearch = try context.fetch(fetchRequest)
                         var apiChoreDict = Dictionary(uniqueKeysWithValues: zip(apiChoreIds, self.chores))
