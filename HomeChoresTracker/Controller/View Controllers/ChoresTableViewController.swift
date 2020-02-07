@@ -45,6 +45,8 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
         return frc
     }()
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Segue Handler
     enum SegueIdentifier: String {
         case showChoreDetail = "ShowChoreDetailSegue"
     }
@@ -116,6 +118,7 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
     }
 }
 
+// MARK: - NSFetchedResultsController Delegate Methods
 extension ChoresTableViewController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

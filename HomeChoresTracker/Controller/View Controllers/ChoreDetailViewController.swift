@@ -28,10 +28,11 @@ class ChoreDetailViewController: UIViewController {
             updateViews()
         }
     }
+    ///Pretty print the date string returned from the API
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
-        formatter.timeStyle = .short
+        formatter.timeStyle = .none
         return formatter
     }()
     
@@ -86,6 +87,7 @@ class ChoreDetailViewController: UIViewController {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Actions
+    ///save the image to the API, and on disk
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         guard let chore = chore else { return }
         if let imageData = choreImageView.image?.jpegData(compressionQuality: 0.7) {
@@ -135,6 +137,8 @@ class ChoreDetailViewController: UIViewController {
     }
 }
 
+// --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+// MARK: - Image Picker Delegate Method
 extension ChoreDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }

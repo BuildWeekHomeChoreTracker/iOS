@@ -54,6 +54,7 @@ class ViewController: UIViewController, SegueHandler {
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Actions
+    ///Log user in or show an error message. If login is successful, save username to UserDefaults
     @IBAction func signInButtonTapped(_ sender: UIButton) {
         guard let username = usernameTextField.text, !username.isEmpty,
             let password = passwordTextField.text, !password.isEmpty
