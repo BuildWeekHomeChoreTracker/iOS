@@ -22,7 +22,8 @@ class ChoresTableViewController: UITableViewController, SegueHandler {
             NSSortDescriptor(key: "completed", ascending: true),
             NSSortDescriptor(key: "dueDate", ascending: false)
         ]
-        fetchRequest.predicate = NSPredicate(format: "childId = %@", childController?.bearer?.id ?? "1")
+        let id = Int(childController?.bearer?.id ?? "1") ?? 1
+        fetchRequest.predicate = NSPredicate(format: "childId == %d", id)
         let context = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "completed", cacheName: nil)
         frc.delegate = self
