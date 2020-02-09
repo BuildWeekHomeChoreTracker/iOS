@@ -120,7 +120,7 @@ class ChoreDetailViewController: UIViewController {
                     if let url = url {
                         //get array of ids for searching in CoreData
                         //create fetchRequest and assign predicate as searched id
-                        let context = CoreDataStack.shared.backgroundContext
+                        let context = CoreDataStack.shared.mainContext
                         context.performAndWait {
                             do {
                                 let fetchRequest: NSFetchRequest<Chore> = Chore.fetchRequest()
@@ -128,11 +128,11 @@ class ChoreDetailViewController: UIViewController {
                                 fetchRequest.predicate = NSPredicate(format: "id IN %@", idArray)
                                 let chore = try context.fetch(fetchRequest)
                                 if let firstChore = chore.first {
+                                    //ßthis call saves context eventually
                                     self.childController?.completeChore(firstChore, with: url, context: context) {
                                         self.navigationController?.popViewController(animated: true)
                                     }
                                 }
-                                
                             } catch {
                                 print(error)
                             }
@@ -149,11 +149,11 @@ class ChoreDetailViewController: UIViewController {
                         fetchRequest.predicate = NSPredicate(format: "id IN %@", idArray)
                         let chore = try context.fetch(fetchRequest)
                         if let firstChore = chore.first {
+                            //this call saves context
                             self.childController?.completeChore(firstChore, context: context) {
                                 self.navigationController?.popViewController(animated: true)
                             }
                         }
-                        
                     } catch {
                         print(error)
                     }

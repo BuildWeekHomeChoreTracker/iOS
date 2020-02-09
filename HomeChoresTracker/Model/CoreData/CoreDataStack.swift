@@ -33,15 +33,16 @@ class CoreDataStack {
         container.newBackgroundContext()
     }
     
-    func save(_ context: NSManagedObjectContext = CoreDataStack.shared.mainContext) throws {
+    func save(_ context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         var error: Error?
         context.performAndWait {
             do {
                 try context.save()
             } catch let saveError {
+                context.reset()
                 error = saveError
+                print("error saving: \(String(describing: error))")
             }
         }
-        if let error = error { throw error }
     }
 }

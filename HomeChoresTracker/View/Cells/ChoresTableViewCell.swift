@@ -51,5 +51,5 @@ class ChoresTableViewCell: UITableViewCell {
         choreTitleLabel.text = chore.title
         choreScoreLabel.text = "\(chore.score ?? 0)"
         dueDateLabel.text = dateFormatter.string(from: chore.dateFromString)
-    }    
+    }
 }

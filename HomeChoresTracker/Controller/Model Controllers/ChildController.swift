@@ -69,7 +69,6 @@ class ChildController {
     // MARK: - Create
     func createMOCChore(representation: ChoreRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         Chore(representation: representation, context: context)
-        try? CoreDataStack.shared.save(context)
     }
     
     // MARK: - Read From API
@@ -145,7 +144,7 @@ class ChildController {
                             guard let rep = chore.choreRepresentation else {
                                 let error = NSError(domain: "GetChores.updateChores.createChoreReps", code: 999)
                                 complete(error)
-                                return
+                                continue
                             }
                             choreReps.append(rep)
                             apiChoreDict.removeValue(forKey: rep.id)
@@ -156,9 +155,7 @@ class ChildController {
                         for (_, chore) in apiChoreDict {
                             self.createMOCChore(representation: chore, context: context)
                         }
-                        try? context.save()
-                        
-                        
+                        CoreDataStack.shared.save(context)
                         DispatchQueue.main.async {
                             complete(nil)
                         }
@@ -218,13 +215,14 @@ class ChildController {
                         repDict.removeValue(forKey: Int(chore.id))
                     }
                     for rep in repDict.values {
-                        Chore(representation: rep)
+                        self.createMOCChore(representation: rep, context: context)
                     }
                 } catch {
                     print(error)
                 }
             }
-            try? CoreDataStack.shared.save(context)
+            #warning("changed this to debug race condition")
+            //CoreDataStack.shared.save(context)
         }
     }
     /**
@@ -305,7 +303,7 @@ class ChildController {
             }
         }
     }
-    
+    ///set the chore's completed flag to "true" (1) then save to the API and in CoreData
     func completeChore(_ chore: Chore, with url: URL? = nil, context: NSManagedObjectContext = CoreDataStack.shared.mainContext, completion: @escaping () -> Void) {
         chore.completed = 1
         if let url = url {
@@ -314,20 +312,16 @@ class ChildController {
         updateChore(chore, context: context)
         completion()
     }
-    
-    private func updateMOCChore(_ context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        do {
-            try CoreDataStack.shared.save(context)
-        } catch {
-            print(error)
-        }
-    }
-    
+    ///Update Chore on the API and in CoreData
     private func updateChore(_ chore: Chore, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         if let rep = chore.choreRepresentation {
             updateAPIChore(rep)
         }
         updateMOCChore(context)
+    }
+    ///Update Chore in CoreData
+    private func updateMOCChore(_ context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        CoreDataStack.shared.save(context)
     }
     
     // MARK: - Helper Methods
