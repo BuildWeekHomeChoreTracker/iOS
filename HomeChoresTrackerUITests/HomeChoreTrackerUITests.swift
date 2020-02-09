@@ -59,7 +59,7 @@ class HomeChoreTrackerUITests: XCTestCase {
         
         XCTAssertNotNil(app.cells)
         
-        let cell = app.cells.staticTexts["UseDuster"]
+        let cell = app.cells.staticTexts["wash dishes"]
         XCTAssertNotNil(cell)
         
         XCTAssertNotNil(cell.images["chore_bg"])
@@ -84,8 +84,8 @@ class HomeChoreTrackerUITests: XCTestCase {
         wait(for: [exp], timeout: 4)
         XCTAssert(app.staticTexts["Chores"].exists)
         
-        app.cells.staticTexts["Rake Yard"].tap()
-        XCTAssert(app.staticTexts["Rake Yard"].exists)
+        app.cells.staticTexts["wash dishes"].tap()
+        XCTAssert(app.staticTexts["wash dishes"].exists)
         XCTAssertNotNil(app.images["detailImage"])
     }
     
@@ -108,10 +108,15 @@ class HomeChoreTrackerUITests: XCTestCase {
         wait(for: [exp], timeout: 4)
         XCTAssert(app.staticTexts["Chores"].exists)
         
-        app.cells.staticTexts["Take the trash outside"].tap()
-        XCTAssert(app.staticTexts["Take the trash outside"].exists)
+        app.cells.staticTexts["Rake Yard"].tap()
+        XCTAssert(app.staticTexts["Rake Yard"].exists)
         app.buttons["All Done!"].tap()
-        XCTAssert(app.staticTexts["Chores"].exists)
+        let animationExpectation = expectation(description: "Waiting for animation")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            animationExpectation.fulfill()
+        }
+        wait(for: [animationExpectation], timeout: 3)
+        XCTAssert(self.app.staticTexts["Chores"].exists)
     }
     
     func testCellsNotMissing() {
