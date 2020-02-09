@@ -205,8 +205,8 @@ class ChildController {
             var repDict = Dictionary(uniqueKeysWithValues: zip(identifiers, representations))
             
             fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiers)
-            let context = CoreDataStack.shared.container.newBackgroundContext()
-            context.perform {
+            let context = CoreDataStack.shared.backgroundContext
+            context.performAndWait {
                 do {
                     let chores = try context.fetch(fetchRequest)
                     for chore in chores {
@@ -221,7 +221,7 @@ class ChildController {
                     print(error)
                 }
             }
-            #warning("changed this to debug race condition")
+            #warning("changed this to debug race condition - also, it's being saved somewhere unexpectedly")
             //CoreDataStack.shared.save(context)
         }
     }
